@@ -7,6 +7,11 @@ package projetoldp;
 
 import java.io.*;
 import java.net.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Random;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import static javafx.application.Application.launch;
 
 /**
@@ -17,87 +22,192 @@ public class GameServer {
 
     private ServerSocket ss;
     private int numPlayers;
-    private ServerSideConnection player1;
-    private ServerSideConnection player2;
     private int turnsMade;
     private int maxTurns;
     private int[] values;
-    
-    public GameServer() {
-        System.out.println("-----Game Servers");
-        numPlayers = 0;
-        turnsMade = 0;
-        maxTurns = 4;
-        values = new int[4];
-        
-        for( int i =0; i< values.length; i++){
-            
-        }
-        try {
-            ss = new ServerSocket(51734);
 
-        } catch (IOException ex) {
-            System.out.println("IOException from GameServer Constructor");
-        }
+    private static int port = 6666, nClientes = 1;
+    // lista de jogadores disponíveis
+    private static List<ClientHandler> listaClientes = new ArrayList<>();
+    // número de jogadores a jogar
+    static int njogadores = 0;
+    // id atribuido a um novo cliente
+    static int id = 0;
+    private static Socket s;
 
-    }
+    public static void main(String[] args) throws IOException {
+        System.out.println("Servidor aceita conexões (à escuta na porta " + port + ") .");
+        ServerSocket ss = new ServerSocket(port);
 
-    public void acceptConnections() {
-        try {
-            System.out.println("Waiting for Connections...");
-            while (numPlayers < 2) {
-                Socket s = ss.accept();
-                numPlayers++;
-                System.out.println("Player #" + numPlayers + "conectou-se.");
-                ServerSideConnection ssc = new ServerSideConnection(s, numPlayers);
-                if(numPlayers == 1){
-                    player1= ssc;
-                }else{
-                    player2 = ssc;
+        Thread servidor = new Thread(() -> {
+
+            while (true) {
+                try {
+                    s = ss.accept();
+
+                    DataInputStream dis = new DataInputStream(s.getInputStream());
+                    DataOutputStream dos = new DataOutputStream(s.getOutputStream());
+                    ObjectInputStream in = new ObjectInputStream(s.getInputStream());
+                    ObjectOutputStream objOut = new ObjectOutputStream(s.getOutputStream());
+
+                    System.out.println("Novo client recebido : " + s);
+                    ClientHandler mtch = new ClientHandler(s, "client " + id, dis, dos, id, in, objOut);
+
+                    Thread t = new Thread(mtch);
+
+                    listaClientes.add(mtch);
+                    dos.writeUTF("nomeJogador" + mtch.code);
+                    String idNome = Integer.toString(id);
+                    t.setName(idNome);
+
+                    t.start();
+
+                    njogadores++;
+                    id++;
+                    System.out.println("Adiciona cliente " + id + " à lista ativa." + s.getInetAddress());
+
+                } catch (IOException ex) {
+                    Logger.getLogger(GameServer.class.getName()).log(Level.SEVERE, null, ex);
                 }
-                Thread t = new Thread(ssc);
-                t.start();
             }
-            System.out.println("Dois players já se conectaram, deixamos de aceitar conecções");
-        } catch (IOException ex) {
-            System.out.println("IOException from acceptConnection()");
-        }
+        });
+        servidor.start();
     }
 
-    private class ServerSideConnection implements Runnable {
+    private static class ClientHandler implements Runnable {
 
-        private Socket socket;
-        private DataInputStream dataIn;
-        private DataOutputStream dataOut;
-        private int playerID;
-        
-        public ServerSideConnection(Socket s, int id ){
-            socket = s;
-            playerID = id;
-            try{
-                dataIn = new DataInputStream(socket.getInputStream());
-                dataOut = new DataOutputStream(socket.getOutputStream());
-                
-            }catch(IOException ex){
-                System.out.println("IOException from Server Side Connection Constructor");
-            }
+        private String code;
+        private String nome;
+        final DataInputStream dis;
+        final DataOutputStream dos;
+        Socket s;
+        boolean isloggedin;
+        final int id;
+        ObjectInputStream in;
+        ObjectOutputStream objOut;
+        private boolean prontoJogar;
+        private boolean[][] mapaNavios;
+        private List<String[]> posicoesNavios;
+        private boolean jogoTerminado;
+
+        private ClientHandler(Socket s, String string,
+                DataInputStream dis, DataOutputStream dos, int id, ObjectInputStream in, ObjectOutputStream objOut) {
+            this.s = s;
+            this.dis = dis;
+            this.dos = dos;
+            this.code = string;
+            this.id = id;
+            this.isloggedin = true;
+            this.in = in;
+            this.objOut = objOut;
+            this.nome = null;
+            this.prontoJogar = false;
+            this.jogoTerminado = false;
         }
-        public void run(){
-            try{
-                dataOut.writeInt(playerID);
-                dataOut.flush();
-                while(true){
-                    
+        static String recebido;
+
+        // verifica se os jogadores estão prontos para jogar
+        private boolean verificaJogadoresProntos() {
+            boolean result = true;
+            if (GameServer.njogadores < 2) {
+                result = false;
+            } else {
+                for (ClientHandler c : GameServer.listaClientes) {
+                    if (!c.prontoJogar) {
+                        result = false;
+                    }
                 }
-            }catch(IOException ex){
-                System.out.println("IOException from run in Server Side Connection");
             }
+            return result;
+        }
+
+        // devolve o nome do outro jogador
+        private String getNomeOutroJogador(String codeJogador) {
+            String result = "";
+            for (ClientHandler c : GameServer.listaClientes) {
+                if (!c.code.equals(codeJogador)) {
+                    result = c.nome;
+                }
+            }
+            return result;
+        }
+
+        public boolean geraVez() {
+            boolean result = false;
+            Random r = new Random();
+            int random = r.nextInt();
+            if (random % 2 == 0) {
+                result = true;
+            }
+            return result;
+        }
+
+        @Override
+        public void run() {
+
+            if (GameServer.njogadores > 2) {
+                try {
+                    System.out.println("Avisar que sala está cheia e remover jogador..");
+                    dos.writeUTF("#salacheia");
+                    this.isloggedin = false;
+                    GameServer.listaClientes.remove(this);
+                    GameServer.njogadores--;
+                    this.s.close();
+                    return;
+                } catch (Exception e) {
+                };
+            }
+            Thread cliente = new Thread(() -> {
+                while (true) {
+
+                    try {
+                        recebido = dis.readUTF();
+
+                        if (recebido.startsWith("#dados")) {
+                            // #nome-nomeJogador
+
+                            String[] msgSplit = recebido.split("-");
+
+                            for (ClientHandler client : GameServer.listaClientes) {
+
+                                System.out.println("Mensagem a ser enviada: " + recebido);
+                                client.dos.writeUTF(recebido);
+                            }
+                        }
+
+                        if (recebido.endsWith("#logout")) {
+                            for (ClientHandler client : GameServer.listaClientes) {
+                                if (!client.code.equals(code) && client.isloggedin) {
+                                    client.dos.writeUTF("#logout-" + nome);
+                                }
+                            }
+                            this.isloggedin = false;
+                            GameServer.listaClientes.remove(this);
+                            GameServer.njogadores--;
+                            System.out.println("Jogador " + this.nome + " saiu do jogo...");
+                            this.s.close();
+
+                            for (ClientHandler c : GameServer.listaClientes) {
+                                // avisar o cliente que terá que esperar agora
+                                if (GameServer.njogadores < 2 && c.prontoJogar) {
+                                    if (this.jogoTerminado) {
+                                        c.dos.writeUTF("#espera-nada");
+                                    } else {
+                                        c.dos.writeUTF("#espera-desistencia");
+                                    }
+                                }
+                            }
+                            break; // while
+                        }
+
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
+                }
+            });
+            cliente.start();
+
         }
     }
 
-    public static void main(String[] args) {
-        GameServer gs = new GameServer();
-        gs.acceptConnections();
-          
-    }
 }

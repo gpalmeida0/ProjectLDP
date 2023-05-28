@@ -10,26 +10,59 @@ import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
+import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.text.*;
 
 /**
  *
- * @author gaalm
- */
+ 
+@author gaalm*/
 public class FXMLDocumentController implements Initializable {
+
+    @FXML
+    private Button lancardados;
+    public static Button lancardadosEstatico;
+
+    @FXML
+    private Text text1;
+    public static Text text1Estatico;
+
+    @FXML
+    private Text text2;
+    public static Text text2Estatico;
+
+    @FXML
+    private Text text3;
+    public static Text text3Estatico;
     
     @FXML
-    private Label label;
-    
+    private Text txtDados;
+    public static Text txtDadosEstatico;
+
     @FXML
     private void handleButtonAction(ActionEvent event) {
-        System.out.println("You clicked me!");
-        label.setText("Hello World!");
+        /*int dado1, dado2, dado3;
+
+        //LANÇA O DADO E OBTÉM UM VALOR ENTRE 1 e 6
+        dado1 = (int) (Math.random() * 6 + 1);
+        dado2 = (int) (Math.random() * 6 + 1);
+        dado3 = (int) (Math.random() * 6 + 1);
+        text1.setText("" + dado1);
+        text2.setText("" + dado2);
+        text3.setText("" + dado3);*/
+
     }
-    
+
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-    }    
-    
+        text1Estatico = text1;
+        text2Estatico = text2;
+        text3Estatico = text3;
+        lancardadosEstatico = lancardados;
+        txtDadosEstatico = txtDados;
+
+    }
+
 }

@@ -5,6 +5,7 @@
  */
 package projetoldp;
 
+import java.io.ObjectOutputStream;
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
@@ -15,9 +16,14 @@ import javafx.stage.Stage;
  *
  * @author gaalm
  */
-public class ProjetoLDP extends Application {
+public class ProjetoLDP {
     
-    @Override
+    ObjectOutputStream out;
+    
+    public ProjetoLDP(ObjectOutputStream out) {
+        this.out = out;
+    }
+    
     public void start(Stage stage) throws Exception {
         Parent root = FXMLLoader.load(getClass().getResource("FXMLDocument.fxml"));
         
@@ -26,12 +32,14 @@ public class ProjetoLDP extends Application {
         stage.setScene(scene);
         stage.show();
     }
-
-    /**
-     * @param args the command line arguments
-     */
-    public static void main(String[] args) {
-        launch(args);
-    }
     
+    
+    public void displayDados(int d1,int d2,int d3){
+        
+        
+        System.out.println("sdlkfjgnkspdfgnjskdjfgnlskdfnglksdjnfglksdfgnlksdjfg");
+        FXMLDocumentController.text1Estatico.setText("" + d1);
+        FXMLDocumentController.text2Estatico.setText("" + d2);
+        FXMLDocumentController.text3Estatico.setText("" + d3);
+    }
 }
