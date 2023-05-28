@@ -178,44 +178,26 @@ public class GameServer {
                                 System.out.println("Mensagem a ser enviada: " + recebido);
                                 client.dos.writeUTF(recebido);
                             }
-                        }
-                        
-                        if (recebido.startsWith("#vez")) {
+                        }else if (recebido.startsWith("#nome")){
                             // #nome-nomeJogador
-
                             
-
-                            for (ClientHandler client : GameServer.listaClientes) {
-                               
-                               
-                                System.out.println("Mensagem a ser enviada: " + recebido);
-                                client.dos.writeUTF(recebido);
-                            }
-                        }
-
-                        if (recebido.endsWith("#logout")) {
+                            boolean vez = this.geraVez();
                             for (ClientHandler client : GameServer.listaClientes) {
                                 if (!client.code.equals(code) && client.isloggedin) {
-                                    client.dos.writeUTF("#logout-" + nome);
+                                    String message = "#nome-" + !vez;
+                                    System.out.println("Mensagem a ser enviada: " + message);
+                                    client.dos.writeUTF(message);
+                                }
+                                else{
+                                    String message = "#nome-" + vez;
+                                    System.out.println("Mensagem a ser enviada: " + message);
+                                    client.dos.writeUTF(message);
                                 }
                             }
-                            this.isloggedin = false;
-                            GameServer.listaClientes.remove(this);
-                            GameServer.njogadores--;
-                            System.out.println("Jogador " + this.nome + " saiu do jogo...");
-                            this.s.close();
-
-                            for (ClientHandler c : GameServer.listaClientes) {
-                                // avisar o cliente que terá que esperar agora
-                                if (GameServer.njogadores < 2 && c.prontoJogar) {
-                                    if (this.jogoTerminado) {
-                                        c.dos.writeUTF("#espera-nada");
-                                    } else {
-                                        c.dos.writeUTF("#espera-desistencia");
-                                    }
-                                }
+                        }else if(recebido.startsWith("#vez")){
+                            for (ClientHandler client : GameServer.listaClientes) {
+                                client.dos.writeUTF(recebido);
                             }
-                            break; // while
                         }
 
                     } catch (IOException e) {

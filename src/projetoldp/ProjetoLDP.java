@@ -21,6 +21,7 @@ public class ProjetoLDP {
     
     ObjectOutputStream out;
       private boolean minhavez = true;
+      
     public ProjetoLDP(ObjectOutputStream out) {
         this.out = out;
     }
@@ -42,9 +43,11 @@ public class ProjetoLDP {
         FXMLDocumentController.text2Estatico.setText("" + d2);
         FXMLDocumentController.text3Estatico.setText("" + d3);
     }
+    
     public void passouVez(){
         this.mudaVez();
     }
+    
     public void iniciaJogo(boolean vez){
         this.minhavez = vez;
         // pinta o mapa de branco, caso seja a segunda vez que esteja a jogar
@@ -52,9 +55,7 @@ public class ProjetoLDP {
         Platform.runLater(() -> {
             String labelText = "É a tua vez...";
             if(!this.minhavez) labelText = "É a vez do adversário...";
-            FXMLDocumentController.labelVezEstatico.setText("É a tua vez!!");
-           
-            
+            FXMLDocumentController.labelVezEstatico.setText(labelText);
         });
         
     }
@@ -64,7 +65,7 @@ public class ProjetoLDP {
         Platform.runLater(() -> {
             String labelText = "É a tua vez...";
             if(!this.minhavez) labelText = "É a vez do adversário...";
-             FXMLDocumentController.labelVezEstatico.setText("Espera pela tua vez!!");
+             FXMLDocumentController.labelVezEstatico.setText(labelText);
             
         });
     }
