@@ -34,6 +34,7 @@ public class GameServer {
     // id atribuido a um novo cliente
     static int id = 0;
     private static Socket s;
+    static boolean minhavez = true;
 
     public static void main(String[] args) throws IOException {
         System.out.println("Servidor aceita conexões (à escuta na porta " + port + ") .");
@@ -51,12 +52,13 @@ public class GameServer {
                     ObjectOutputStream objOut = new ObjectOutputStream(s.getOutputStream());
 
                     System.out.println("Novo client recebido : " + s);
-                    ClientHandler mtch = new ClientHandler(s, "client " + id, dis, dos, id, in, objOut);
+                    ClientHandler mtch = new ClientHandler(s, "client " + id, dis, dos, id, in, objOut, minhavez);
 
                     Thread t = new Thread(mtch);
 
                     listaClientes.add(mtch);
                     dos.writeUTF("nomeJogador" + mtch.code);
+                    dos.writeUTF(Boolean.toString(minhavez));
                     String idNome = Integer.toString(id);
                     t.setName(idNome);
 
@@ -64,6 +66,7 @@ public class GameServer {
 
                     njogadores++;
                     id++;
+                    minhavez = false;
                     System.out.println("Adiciona cliente " + id + " à lista ativa." + s.getInetAddress());
 
                 } catch (IOException ex) {
@@ -89,9 +92,10 @@ public class GameServer {
         private boolean[][] mapaNavios;
         private List<String[]> posicoesNavios;
         private boolean jogoTerminado;
+        boolean minhavez;
 
         private ClientHandler(Socket s, String string,
-                DataInputStream dis, DataOutputStream dos, int id, ObjectInputStream in, ObjectOutputStream objOut) {
+                DataInputStream dis, DataOutputStream dos, int id, ObjectInputStream in, ObjectOutputStream objOut, boolean minhavez) {
             this.s = s;
             this.dis = dis;
             this.dos = dos;
@@ -103,6 +107,7 @@ public class GameServer {
             this.nome = null;
             this.prontoJogar = false;
             this.jogoTerminado = false;
+            this.minhavez = minhavez;
         }
         static String recebido;
 
@@ -170,6 +175,19 @@ public class GameServer {
 
                             for (ClientHandler client : GameServer.listaClientes) {
 
+                                System.out.println("Mensagem a ser enviada: " + recebido);
+                                client.dos.writeUTF(recebido);
+                            }
+                        }
+                        
+                        if (recebido.startsWith("#vez")) {
+                            // #nome-nomeJogador
+
+                            
+
+                            for (ClientHandler client : GameServer.listaClientes) {
+                               
+                               
                                 System.out.println("Mensagem a ser enviada: " + recebido);
                                 client.dos.writeUTF(recebido);
                             }

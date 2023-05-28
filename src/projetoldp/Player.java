@@ -47,6 +47,7 @@ public class Player extends Application {
     static DataOutputStream out;
     static ObjectOutputStream objOut;
     static ObjectInputStream inObj;
+    static String minhavez;
     private ProjetoLDP jogoInstancia;
 
     @Override
@@ -73,15 +74,7 @@ public class Player extends Application {
         contentPane.add(b3);
         contentPane.add(b4);
 
-        if (playerID == 1) {
-            message.setText("You are player number 1. You go first");
-            otherPlayer = 2;
-        } else {
-            message.setText("You are player number 2. Wait for your turn");
-            otherPlayer = 1;
-        }
 //        this.setVisible(true);
-
     }
 
     public void connectToServer() {
@@ -142,34 +135,58 @@ public class Player extends Application {
         inObj = new ObjectInputStream(socket.getInputStream());
         jogoInstancia = new ProjetoLDP(objOut);
         String nomeJogadorserver = in.readUTF();
+        minhavez = in.readUTF();
+        System.out.println("" + minhavez);
 
         // Thread que serve para o cliente envia mensagens para o servidor
         Thread enviarMensagem;
         enviarMensagem = new Thread(() -> {
+            
+           
+                  
+                FXMLDocumentController.lancardadosEstatico.setOnMousePressed(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
 
-            FXMLDocumentController.lancardadosEstatico.setOnMousePressed(new EventHandler<MouseEvent>() {
-                @Override
-                public void handle(MouseEvent event) {
+                        try {
 
-                    try {
+                            int dado1, dado2, dado3;
+                            System.out.println(nomeJogadorserver);
+                            //LANÇA O DADO E OBTÉM UM VALOR ENTRE 1 e 6
+                            dado1 = (int) (Math.random() * 6 + 1);
+                            dado2 = (int) (Math.random() * 6 + 1);
+                            dado3 = (int) (Math.random() * 6 + 1);
 
-                        int dado1, dado2, dado3;
+                            out.writeUTF("#dados" + "-" + dado1 + "-" + dado2 + "-" + dado3);
+                        } catch (IOException ex) {
+                            System.out.println("IOException from click button");
+                        }
 
-                        //LANÇA O DADO E OBTÉM UM VALOR ENTRE 1 e 6
-                        dado1 = (int) (Math.random() * 6 + 1);
-                        dado2 = (int) (Math.random() * 6 + 1);
-                        dado3 = (int) (Math.random() * 6 + 1);
-
-                        out.writeUTF("#dados" + "-" + dado1 + "-" + dado2 + "-" + dado3);
-                    } catch (IOException ex) {
-                        System.out.println("errororosdosersdfasdfadf goncalo");
+                      
+                            //FXMLDocumentController.txtDadosEstatico.setText("Nabo");
+                     
                     }
+                });
+                
+                
+                FXMLDocumentController.jogadaEstatico.setOnMousePressed(new EventHandler<MouseEvent>() {
+                    @Override
+                    public void handle(MouseEvent event) {
 
-                    Platform.runLater(() -> {
-                        //FXMLDocumentController.txtDadosEstatico.setText("Nabo");
-                    });
-                }
-            });
+                        try {
+                            out.writeUTF("#vez"); //FXMLDocumentController.txtDadosEstatico.setText("Nabo");
+                        } catch (IOException ex) {
+                            Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
+                        }
+                     
+                    }
+                 
+                });
+                
+                
+                
+                
+           
 
             //coisas de logout...
             /*FXMLDocumentController.logoutButtonEstatico.setOnMousePressed(new EventHandler<MouseEvent>() {
@@ -212,6 +229,7 @@ public class Player extends Application {
                     Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
                 }
             });*/
+         
         });
 
         Thread lerMensagem;
@@ -231,8 +249,15 @@ public class Player extends Application {
                         int dado2 = Integer.parseInt(msgSplit[2]);
                         int dado3 = Integer.parseInt(msgSplit[3]);
 
-                        jogoInstancia.displayDados(dado1,dado2,dado3);
+                        jogoInstancia.displayDados(dado1, dado2, dado3);
                     }
+                    
+                    if (msg.startsWith("#vez")) {
+                        
+
+                        jogoInstancia.mudaVez();
+                    }
+                   
 
                     /*if(msg.startsWith("#disparo")){
                         // #disparo-x-y-acertou ou #disparo-x-y-acertou-terminado

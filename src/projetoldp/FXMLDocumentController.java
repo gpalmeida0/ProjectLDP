@@ -23,6 +23,10 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button lancardados;
     public static Button lancardadosEstatico;
+    
+    @FXML
+    private Button jogada;
+    public static Button jogadaEstatico;
 
     @FXML
     private Text text1;
@@ -39,6 +43,10 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Text txtDados;
     public static Text txtDadosEstatico;
+    
+    @FXML
+    private Label labelVez;
+    public static Label labelVezEstatico;
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
@@ -62,6 +70,8 @@ public class FXMLDocumentController implements Initializable {
         text3Estatico = text3;
         lancardadosEstatico = lancardados;
         txtDadosEstatico = txtDados;
+        jogadaEstatico = jogada;
+        labelVezEstatico = labelVez;
 
     }
 

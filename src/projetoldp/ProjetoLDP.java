@@ -7,6 +7,7 @@ package projetoldp;
 
 import java.io.ObjectOutputStream;
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -19,7 +20,7 @@ import javafx.stage.Stage;
 public class ProjetoLDP {
     
     ObjectOutputStream out;
-    
+      private boolean minhavez = true;
     public ProjetoLDP(ObjectOutputStream out) {
         this.out = out;
     }
@@ -36,10 +37,39 @@ public class ProjetoLDP {
     
     public void displayDados(int d1,int d2,int d3){
         
-        
         System.out.println("sdlkfjgnkspdfgnjskdjfgnlskdfnglksdjnfglksdfgnlksdjfg");
         FXMLDocumentController.text1Estatico.setText("" + d1);
         FXMLDocumentController.text2Estatico.setText("" + d2);
         FXMLDocumentController.text3Estatico.setText("" + d3);
+    }
+    public void passouVez(){
+        this.mudaVez();
+    }
+    public void iniciaJogo(boolean vez){
+        this.minhavez = vez;
+        // pinta o mapa de branco, caso seja a segunda vez que esteja a jogar
+       
+        Platform.runLater(() -> {
+            String labelText = "É a tua vez...";
+            if(!this.minhavez) labelText = "É a vez do adversário...";
+            FXMLDocumentController.labelVezEstatico.setText("É a tua vez!!");
+           
+            
+        });
+        
+    }
+    
+      public void mudaVez(){
+        this.minhavez = !this.minhavez;
+        Platform.runLater(() -> {
+            String labelText = "É a tua vez...";
+            if(!this.minhavez) labelText = "É a vez do adversário...";
+             FXMLDocumentController.labelVezEstatico.setText("Espera pela tua vez!!");
+            
+        });
+    }
+      
+       public boolean getMinhaVez(){
+        return this.minhavez;
     }
 }
