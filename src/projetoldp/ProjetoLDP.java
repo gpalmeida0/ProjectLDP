@@ -51,7 +51,15 @@ public class ProjetoLDP {
     public void iniciaJogo(boolean vez){
         this.minhavez = vez;
         // pinta o mapa de branco, caso seja a segunda vez que esteja a jogar
-       
+         Platform.runLater(() -> {
+             if(!this.minhavez){
+                 FXMLDocumentController.jogadaEstatico.setDisable(true);
+                 FXMLDocumentController.lancardadosEstatico.setDisable(true);
+             }else{
+                 FXMLDocumentController.jogadaEstatico.setDisable(false);
+                 FXMLDocumentController.lancardadosEstatico.setDisable(false);
+             }
+         });
         Platform.runLater(() -> {
             String labelText = "É a tua vez...";
             if(!this.minhavez) labelText = "É a vez do adversário...";
@@ -62,6 +70,16 @@ public class ProjetoLDP {
     
       public void mudaVez(){
         this.minhavez = !this.minhavez;
+        
+        Platform.runLater(() -> {
+             if(!this.minhavez){
+                 FXMLDocumentController.jogadaEstatico.setDisable(true);
+                 FXMLDocumentController.lancardadosEstatico.setDisable(true);
+             }else{
+                 FXMLDocumentController.jogadaEstatico.setDisable(false);
+                 FXMLDocumentController.lancardadosEstatico.setDisable(false);
+             }
+         });
         Platform.runLater(() -> {
             String labelText = "É a tua vez...";
             if(!this.minhavez) labelText = "É a vez do adversário...";
