@@ -9,6 +9,7 @@ import javax.swing.*;
 import java.awt.*;
 import java.io.*;
 import java.net.*;
+import java.util.ArrayList;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javafx.application.Application;
@@ -80,6 +81,7 @@ public class Player extends Application {
 
     public void connectToServer() {
         csc = new ClientSideConnection();
+        System.out.println("cabelo");
     }
 
     //Client Connection Inner Class
@@ -96,6 +98,7 @@ public class Player extends Application {
                 dataIn = new DataInputStream(socket.getInputStream());
                 dataOut = new DataOutputStream(socket.getOutputStream());
                 playerID = dataIn.readInt();
+
                 System.out.println("Connected to Server as Player #" + playerID + ".");
 
             } catch (IOException ex) {
@@ -137,14 +140,14 @@ public class Player extends Application {
         jogoInstancia = new ProjetoLDP(objOut);
         String nomeJogadorserver = in.readUTF();
 
-        comecar=true;
+        comecar = true;
         // Thread que serve para o cliente envia mensagens para o servidor
         Thread enviarMensagem;
         enviarMensagem = new Thread(() -> {
-            if(comecar){
+            if (comecar) {
                 try {
                     out.writeUTF("#nome");
-                    comecar=false;
+                    comecar = false;
                 } catch (IOException ex) {
                     Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
                 }
@@ -154,15 +157,13 @@ public class Player extends Application {
                 public void handle(MouseEvent event) {
 
                     try {
+                        int[] dados = new int[3];
 
-                        int dado1, dado2, dado3;
+                        dados = jogoInstancia.geraDado();
+                        jogoInstancia.lancouDados();
                         System.out.println(nomeJogadorserver);
-                        //LANÇA O DADO E OBTÉM UM VALOR ENTRE 1 e 6
-                        dado1 = (int) (Math.random() * 6 + 1);
-                        dado2 = (int) (Math.random() * 6 + 1);
-                        dado3 = (int) (Math.random() * 6 + 1);
+                        out.writeUTF("#dados" + "-" + dados[0] + "-" + dados[1] + "-" + dados[2]);
 
-                        out.writeUTF("#dados" + "-" + dado1 + "-" + dado2 + "-" + dado3);
                     } catch (IOException ex) {
                         System.out.println("IOException from click button");
                     }
@@ -176,7 +177,7 @@ public class Player extends Application {
                 public void handle(MouseEvent event) {
 
                     try {
-                        
+
                         out.writeUTF("#vez"); //FXMLDocumentController.txtDadosEstatico.setText("Nabo");
                     } catch (IOException ex) {
                         Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
@@ -248,16 +249,16 @@ public class Player extends Application {
 
                         jogoInstancia.displayDados(dado1, dado2, dado3);
                     } else if (msg.startsWith("#vez")) {
-                        
+
                         jogoInstancia.mudaVez();
-                        
+
                     } else if (msg.startsWith("#nome")) {
-                        
+
                         String[] msgSplit = msg.split("-");
                         boolean vez = Boolean.parseBoolean(msgSplit[1]);
                         jogoInstancia.iniciaJogo(vez);
                         System.out.println("fsadfsdf: " + msg);
-                        
+
                     }
 
                     /*if(msg.startsWith("#disparo")){

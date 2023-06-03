@@ -94,6 +94,40 @@ public class GameServer {
         private boolean jogoTerminado;
         boolean minhavez;
 
+        private ArrayList<Peca> pecas = new ArrayList<Peca>(15);
+        private ArrayList<Peca> pecasAtacadas = new ArrayList<Peca>(15);
+
+        Peca peca1;
+        Peca peca2;
+        Peca peca3;
+        Peca peca4;
+        Peca peca5;
+        Peca peca6;
+        Peca peca7;
+        Peca peca8;
+        Peca peca9;
+        Peca peca10;
+        Peca peca11;
+        Peca peca12;
+        Peca peca13;
+        Peca peca14;
+        Peca peca15;
+        Peca peca16;
+        Peca peca17;
+        Peca peca18;
+        Peca peca19;
+        Peca peca20;
+        Peca peca21;
+        Peca peca22;
+        Peca peca23;
+        Peca peca24;
+        Peca peca25;
+        Peca peca26;
+        Peca peca27;
+        Peca peca28;
+        Peca peca29;
+        Peca peca30;
+
         private ClientHandler(Socket s, String string,
                 DataInputStream dis, DataOutputStream dos, int id, ObjectInputStream in, ObjectOutputStream objOut, boolean minhavez) {
             this.s = s;
@@ -108,8 +142,81 @@ public class GameServer {
             this.prontoJogar = false;
             this.jogoTerminado = false;
             this.minhavez = minhavez;
+
+            geraPecas(id);
         }
         static String recebido;
+
+        private void geraPecas(int playerID) {
+            if (playerID == 0) {
+                peca1 = new Peca(1);
+                peca2 = new Peca(2);
+                peca3 = new Peca(3);
+                peca4 = new Peca(4);
+                peca5 = new Peca(5);
+                peca6 = new Peca(6);
+                peca7 = new Peca(7);
+                peca8 = new Peca(8);
+                peca9 = new Peca(9);
+                peca10 = new Peca(10);
+                peca11 = new Peca(11);
+                peca12 = new Peca(12);
+                peca13 = new Peca(13);
+                peca14 = new Peca(14);
+                peca15 = new Peca(15);
+
+                pecas.add(peca1);
+                pecas.add(peca2);
+                pecas.add(peca3);
+                pecas.add(peca4);
+                pecas.add(peca5);
+                pecas.add(peca6);
+                pecas.add(peca7);
+                pecas.add(peca8);
+                pecas.add(peca9);
+                pecas.add(peca10);
+                pecas.add(peca11);
+                pecas.add(peca12);
+                pecas.add(peca13);
+                pecas.add(peca14);
+                pecas.add(peca15);
+                System.out.println("PECAS criadas player 1: " + peca1.id);
+
+            } else if (playerID == 1) {
+                peca16 = new Peca(16);
+                peca17 = new Peca(17);
+                peca18 = new Peca(18);
+                peca19 = new Peca(19);
+                peca20 = new Peca(20);
+                peca21 = new Peca(21);
+                peca22 = new Peca(22);
+                peca23 = new Peca(23);
+                peca24 = new Peca(24);
+                peca25 = new Peca(25);
+                peca26 = new Peca(26);
+                peca27 = new Peca(27);
+                peca28 = new Peca(28);
+                peca29 = new Peca(29);
+                peca30 = new Peca(30);
+
+                pecas.add(peca16);
+                pecas.add(peca17);
+                pecas.add(peca18);
+                pecas.add(peca19);
+                pecas.add(peca20);
+                pecas.add(peca21);
+                pecas.add(peca22);
+                pecas.add(peca23);
+                pecas.add(peca24);
+                pecas.add(peca25);
+                pecas.add(peca26);
+                pecas.add(peca27);
+                pecas.add(peca28);
+                pecas.add(peca29);
+                pecas.add(peca30);
+                System.out.println("PECAS criadas player 2: " + peca16.id);
+            }
+        }
 
         // verifica se os jogadores estão prontos para jogar
         private boolean verificaJogadoresProntos() {
@@ -178,23 +285,22 @@ public class GameServer {
                                 System.out.println("Mensagem a ser enviada: " + recebido);
                                 client.dos.writeUTF(recebido);
                             }
-                        }else if (recebido.startsWith("#nome")){
+                        } else if (recebido.startsWith("#nome")) {
                             // #nome-nomeJogador
-                            
+
                             boolean vez = this.geraVez();
                             for (ClientHandler client : GameServer.listaClientes) {
                                 if (!client.code.equals(code) && client.isloggedin) {
                                     String message = "#nome-" + !vez;
                                     System.out.println("Mensagem a ser enviada: " + message);
                                     client.dos.writeUTF(message);
-                                }
-                                else{
+                                } else {
                                     String message = "#nome-" + vez;
                                     System.out.println("Mensagem a ser enviada: " + message);
                                     client.dos.writeUTF(message);
                                 }
                             }
-                        }else if(recebido.startsWith("#vez")){
+                        } else if (recebido.startsWith("#vez")) {
                             for (ClientHandler client : GameServer.listaClientes) {
                                 client.dos.writeUTF(recebido);
                             }
