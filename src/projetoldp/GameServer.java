@@ -28,7 +28,7 @@ public class GameServer {
 
     private static int port = 6666, nClientes = 1;
     // lista de jogadores disponíveis
-    private static List<ClientHandler> listaClientes = new ArrayList<>();
+    public static List<ClientHandler> listaClientes = new ArrayList<>();
     // número de jogadores a jogar
     static int njogadores = 0;
     // id atribuido a um novo cliente
@@ -77,7 +77,7 @@ public class GameServer {
         servidor.start();
     }
 
-    private static class ClientHandler implements Runnable {
+    public static class ClientHandler implements Runnable {
 
         private String code;
         private String nome;
@@ -94,39 +94,11 @@ public class GameServer {
         private boolean jogoTerminado;
         boolean minhavez;
 
-        private ArrayList<Peca> pecas = new ArrayList<Peca>(15);
-        private ArrayList<Peca> pecasAtacadas = new ArrayList<Peca>(15);
+        public  ArrayList<Peca> pecas = new ArrayList<Peca>(15);
+        public ArrayList<Peca> pecasAtacadas = new ArrayList<Peca>(15);
 
-        Peca peca1;
-        Peca peca2;
-        Peca peca3;
-        Peca peca4;
-        Peca peca5;
-        Peca peca6;
-        Peca peca7;
-        Peca peca8;
-        Peca peca9;
-        Peca peca10;
-        Peca peca11;
-        Peca peca12;
-        Peca peca13;
-        Peca peca14;
-        Peca peca15;
-        Peca peca16;
-        Peca peca17;
-        Peca peca18;
-        Peca peca19;
-        Peca peca20;
-        Peca peca21;
-        Peca peca22;
-        Peca peca23;
-        Peca peca24;
-        Peca peca25;
-        Peca peca26;
-        Peca peca27;
-        Peca peca28;
-        Peca peca29;
-        Peca peca30;
+        
+     
 
         private ClientHandler(Socket s, String string,
                 DataInputStream dis, DataOutputStream dos, int id, ObjectInputStream in, ObjectOutputStream objOut, boolean minhavez) {
@@ -149,6 +121,21 @@ public class GameServer {
 
         private void geraPecas(int playerID) {
             if (playerID == 0) {
+                Peca peca1;
+        Peca peca2;
+        Peca peca3;
+        Peca peca4;
+        Peca peca5;
+        Peca peca6;
+        Peca peca7;
+        Peca peca8;
+        Peca peca9;
+        Peca peca10;
+        Peca peca11;
+        Peca peca12;
+        Peca peca13;
+        Peca peca14;
+        Peca peca15;
                 peca1 = new Peca(1);
                 peca2 = new Peca(2);
                 peca3 = new Peca(3);
@@ -180,9 +167,24 @@ public class GameServer {
                 pecas.add(peca13);
                 pecas.add(peca14);
                 pecas.add(peca15);
-                System.out.println("PECAS criadas player 1: " + peca1.id);
+                System.out.println("PECAS criadas player 1: " + pecas.get(0).id);
 
             } else if (playerID == 1) {
+                   Peca peca16;
+        Peca peca17;
+        Peca peca18;
+        Peca peca19;
+        Peca peca20;
+        Peca peca21;
+        Peca peca22;
+        Peca peca23;
+        Peca peca24;
+        Peca peca25;
+        Peca peca26;
+        Peca peca27;
+        Peca peca28;
+        Peca peca29;
+        Peca peca30;
                 peca16 = new Peca(16);
                 peca17 = new Peca(17);
                 peca18 = new Peca(18);
@@ -214,7 +216,7 @@ public class GameServer {
                 pecas.add(peca28);
                 pecas.add(peca29);
                 pecas.add(peca30);
-                System.out.println("PECAS criadas player 2: " + peca16.id);
+                System.out.println("PECAS criadas player 2: " + pecas.get(0));
             }
         }
 
@@ -307,6 +309,8 @@ public class GameServer {
                         }else if (recebido.startsWith("#jogada")) {
                             for (ClientHandler client : GameServer.listaClientes) {
                                 client.dos.writeUTF(recebido);
+                                
+                                System.out.println(client.id+"---"+client.pecas.get(0).id);
                                 
                             }
                         }

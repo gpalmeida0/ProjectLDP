@@ -239,13 +239,16 @@ public class Player extends Application {
                         String[] msgSplit = msg.split("-");
                         String peca = msgSplit[1];
                         int mover = Integer.parseInt(msgSplit[2]);
-
+                       
                         if (mover <= 12) {
                             //verificar se pode mover a casa
                             if (mover == Integer.parseInt(FXMLDocumentController.text1Estatico.getText())) {
                                 //mover peca com dado1 e por caixa do dado 0 ou disable
                                 FXMLDocumentController.text1Estatico.setText("0");
+                               
+                               
                                 jogoInstancia.movePeca(peca, mover);
+                                 System.out.println("TAMANHO ARRAY CASA1---"+jogoInstancia.casa1.posicao.size());
                             } else if (mover == Integer.parseInt(FXMLDocumentController.text2Estatico.getText())) {
                                 FXMLDocumentController.text2Estatico.setText("0");
                             } else if (mover == Integer.parseInt(FXMLDocumentController.text3Estatico.getText())) {

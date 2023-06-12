@@ -101,7 +101,16 @@ public class ProjetoLDP {
     
      public void movePeca(String idpeca, int mover) {
 
-        
+         for (GameServer.ClientHandler c : GameServer.listaClientes) {
+             if(Integer.parseInt(idpeca) <= 15){
+                 if(c.id == 0){
+                     
+                     casa1.posicao.add(c.pecas.get(0));
+                   
+                 }
+             }
+         }
+                    
 
     }
     

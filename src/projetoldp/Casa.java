@@ -17,5 +17,6 @@ public class Casa {
     
     public Casa(int id){
         this.id=id;
+        posicao = new ArrayList<>();
     }
 }
