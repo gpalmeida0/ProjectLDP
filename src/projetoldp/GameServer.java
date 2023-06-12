@@ -304,6 +304,11 @@ public class GameServer {
                             for (ClientHandler client : GameServer.listaClientes) {
                                 client.dos.writeUTF(recebido);
                             }
+                        }else if (recebido.startsWith("#jogada")) {
+                            for (ClientHandler client : GameServer.listaClientes) {
+                                client.dos.writeUTF(recebido);
+                                
+                            }
                         }
 
                     } catch (IOException e) {

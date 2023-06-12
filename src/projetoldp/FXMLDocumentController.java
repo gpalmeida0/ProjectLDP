@@ -5,6 +5,7 @@
  */
 package projetoldp;
 
+import javafx.scene.shape.Rectangle;
 import java.net.URL;
 import java.util.ResourceBundle;
 import javafx.event.ActionEvent;
@@ -12,6 +13,7 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.TextArea;
 import javafx.scene.text.*;
 
 /**
@@ -27,6 +29,10 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Button jogada;
     public static Button jogadaEstatico;
+    
+    @FXML
+    private Button jogar;
+    public static Button jogarEstatico;
 
     @FXML
     private Text text1;
@@ -47,6 +53,23 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Label labelVez;
     public static Label labelVezEstatico;
+    
+    @FXML
+    private TextArea pecaid;
+    public static TextArea pecaidEstatico;
+    
+    @FXML
+    private TextArea posicaoid;
+    public static TextArea posicaoidEstatico;
+    
+     @FXML
+    private Rectangle pos1;
+    public static Rectangle pos1Estatico;
+    
+     @FXML
+    private Rectangle p1;
+    public static Rectangle p1Estatico;
+    
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
@@ -72,6 +95,11 @@ public class FXMLDocumentController implements Initializable {
         txtDadosEstatico = txtDados;
         jogadaEstatico = jogada;
         labelVezEstatico = labelVez;
+        pecaidEstatico = pecaid;
+        posicaoidEstatico = posicaoid;
+        jogarEstatico = jogar;
+        pos1Estatico = pos1;
+        p1Estatico = p1;
 
     }
 

@@ -187,47 +187,23 @@ public class Player extends Application {
 
             });
 
-            //coisas de logout...
-            /*FXMLDocumentController.logoutButtonEstatico.setOnMousePressed(new EventHandler<MouseEvent>() {
+            FXMLDocumentController.jogarEstatico.setOnMousePressed(new EventHandler<MouseEvent>() {
                 @Override
                 public void handle(MouseEvent event) {
+
                     try {
-                        Stage stage = (Stage) FXMLDocumentController.logoutButtonEstatico.getScene().getWindow();
-                        out.writeUTF("#logout");
-                        stage.close();
-                        System.exit(0);
+                        String peca = FXMLDocumentController.pecaidEstatico.getText();
+                        String mover = FXMLDocumentController.posicaoidEstatico.getText();
+                        out.writeUTF("#jogada" + "-" + peca + "-" + mover); //FXMLDocumentController.txtDadosEstatico.setText("Nabo");
                     } catch (IOException ex) {
-                        Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
+                        Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
                     }
+
                 }
 
-            });*/
-            //Serve para clicar em objetos e fazer coisas......... 
-            /*FXMLDocumentController.mapaAdversarioEstatico.setOnMouseClicked(event -> {
-                javafx.scene.shape.Rectangle rect = (javafx.scene.shape.Rectangle)event.getTarget();
-                try{
-                    byte x = FXMLDocumentController.mapaAdversarioEstatico.getColumnIndex(rect).byteValue(),
-                         y = FXMLDocumentController.mapaAdversarioEstatico.getRowIndex(rect).byteValue();
-                    // verifica que se ainda nao disparou na posicao
-                    if(!jogoInstancia.jaDisparou(x, y)){
-                        boolean acertou = jogoInstancia.meuDisparo(x, y);
-                        
-                        // #disparo-x-y-acertou
-                        String msg = "#disparo-" + x + "-" + y + "-" + acertou;
-                        if(this.jogoInstancia.isJogoTerminado()){
-                            // apenas para construir a mensagem e avisar o adversario que perdeu
-                            msg += "-terminado";
-                        }
-                        out.writeUTF(msg);
-                        if(this.jogoInstancia.isJogoTerminado()){
-                            // jogo terminado, notificar o cliente que ganhou o jogo e perguntar se deseja jogar mais                                                                                  
-                            jogoTerminado("Parabéns, ganhou o jogo!\nDeseja jogar mais?");
-                        }
-                    }
-                } catch (IOException ex) {
-                    Logger.getLogger(Cliente.class.getName()).log(Level.SEVERE, null, ex);
-                }
-            });*/
+            });
+
+           
         });
 
         Thread lerMensagem;
@@ -259,111 +235,72 @@ public class Player extends Application {
                         jogoInstancia.iniciaJogo(vez);
                         System.out.println("fsadfsdf: " + msg);
 
+                    } else if (msg.startsWith("#jogada")) {
+                        String[] msgSplit = msg.split("-");
+                        String peca = msgSplit[1];
+                        int mover = Integer.parseInt(msgSplit[2]);
+
+                        if (mover <= 12) {
+                            //verificar se pode mover a casa
+                            if (mover == Integer.parseInt(FXMLDocumentController.text1Estatico.getText())) {
+                                //mover peca com dado1 e por caixa do dado 0 ou disable
+                                FXMLDocumentController.text1Estatico.setText("0");
+                                jogoInstancia.movePeca(peca, mover);
+                            } else if (mover == Integer.parseInt(FXMLDocumentController.text2Estatico.getText())) {
+                                FXMLDocumentController.text2Estatico.setText("0");
+                            } else if (mover == Integer.parseInt(FXMLDocumentController.text3Estatico.getText())) {
+                                FXMLDocumentController.text3Estatico.setText("0");
+                            } else if (mover == (Integer.parseInt(FXMLDocumentController.text1Estatico.getText()) + Integer.parseInt(FXMLDocumentController.text2Estatico.getText()))) {
+                                FXMLDocumentController.text1Estatico.setText("0");
+                                FXMLDocumentController.text2Estatico.setText("0");
+                            } else if (mover == (Integer.parseInt(FXMLDocumentController.text1Estatico.getText()) + Integer.parseInt(FXMLDocumentController.text3Estatico.getText()))) {
+                                FXMLDocumentController.text1Estatico.setText("0");
+                                FXMLDocumentController.text3Estatico.setText("0");
+                            } else if (mover == (Integer.parseInt(FXMLDocumentController.text2Estatico.getText()) + Integer.parseInt(FXMLDocumentController.text2Estatico.getText()))) {
+                                FXMLDocumentController.text2Estatico.setText("0");
+                                FXMLDocumentController.text2Estatico.setText("0");
+                            } else if (mover == (Integer.parseInt(FXMLDocumentController.text1Estatico.getText()) + Integer.parseInt(FXMLDocumentController.text2Estatico.getText()) + Integer.parseInt(FXMLDocumentController.text3Estatico.getText()))) {
+                                FXMLDocumentController.text1Estatico.setText("0");
+                                FXMLDocumentController.text2Estatico.setText("0");
+                                FXMLDocumentController.text2Estatico.setText("0");
+                            }
+
+                            System.out.println(peca);
+                            System.out.println(mover);
+                            double targetX = 0;
+                            double targetY = 0;
+                            switch (mover) {
+                                case 1:
+                                    targetX = FXMLDocumentController.pos1Estatico.layoutXProperty().get();
+                                    targetY = FXMLDocumentController.pos1Estatico.layoutYProperty().get();
+                                    System.out.println(targetX);
+                                    System.out.println(targetY);
+                                    break;
+
+                                default:
+                                    // Handle the case when an invalid position is provided
+                                    return;
+                            }
+                            switch (peca) {
+                                case "1":
+
+                                    FXMLDocumentController.p1Estatico.layoutXProperty().set(targetX);
+                                    FXMLDocumentController.p1Estatico.layoutYProperty().set(targetY);
+                                    targetX = FXMLDocumentController.p1Estatico.layoutXProperty().get();
+                                    targetY = FXMLDocumentController.p1Estatico.layoutYProperty().get();
+                                    System.out.println(targetX);
+                                    System.out.println(targetY);
+                                    break;
+
+                                default:
+                                    // Handle the case when an invalid position is provided
+                                    return;
+                            }
+                        }
+
                     }
 
-                    /*if(msg.startsWith("#disparo")){
-                        // #disparo-x-y-acertou ou #disparo-x-y-acertou-terminado
-                        String[] msgSplit = msg.split("-");
-                        int x = Integer.parseInt(msgSplit[1]);
-                        int y = Integer.parseInt(msgSplit[2]);
-                        boolean acertou = Boolean.parseBoolean(msgSplit[3]);
-                        jogoInstancia.disparoAdversario(x, y, acertou);
-                        // significa que o jogo terminou
-                        if(msgSplit.length == 5){
-                            jogoTerminado("O seu adversário ganhou...");
-                        }
-                    }
-                    else if (msg.startsWith("#chat")) {
-                        // #chat-id-nome-conteudo
-                        String[] msgSplit = msg.split("-");
-                        String time = getMyTime();
-                        String parseMessage = "[" + time + "] " + msgSplit[2] + " : " + msgSplit[3];
-                        Platform.runLater(() -> {
-                            FXMLDocumentController.outputChatTextEstatico.appendText(parseMessage + "\n");
-                            //FXMLDocumentController.textNomeJogador2Estatico.setText(obj1.nomePlayer);
-                        });
-
-                    } 
-                    else if(msg.startsWith("#salacheia")){
-                        System.out.println("Não pode jogar.. Aguarde que um dos dois jogadores acabem de jogar ou saiam do jogo..");   
-                        Platform.runLater(() -> {
-                            Stage stage = (Stage) FXMLDocumentController.boxNomeEstatico.getScene().getWindow();
-                            stage.close();
-                            System.exit(0);
-                        });
-                        
-                    }
-                    else if(msg.startsWith("#nome")){
-                        // #nome-nomeJogador ou #nome-nomeJogador-pronto-vez
-                        String[] msgSplit = msg.split("-");
-                        String jogador = nomeAdversario = msgSplit[1];
-                        Boolean pronto = false;
-                        // verifica se o jogo se encontra pronto para começar
-                        if(msgSplit.length == 4 && msgSplit[2].equals("pronto")) pronto = true; 
-                        String time = getMyTime();
-                        String newMsg = "[" + time + "] Jogador " + jogador + " entrou...";
-                        MapaInfo mapaAdversario = (MapaInfo) inObj.readObject();
-                        jogoInstancia.setNaviosAdversario(mapaAdversario.mapaNavios);
-                        jogoInstancia.setPosicoesNaviosAdversario(mapaAdversario.posicoesNavios);
-                        System.out.println(newMsg);
-                        Platform.runLater(() -> {
-                            FXMLDocumentController.outputChatTextEstatico.appendText(newMsg + "\n");
-                            FXMLDocumentController.labelBatalhaEstatico.setText("Batalha: " + textNomeEstatico.getText() + " vs " + jogador);
-                        });
-                        if(pronto){
-                            boolean vez = Boolean.parseBoolean(msgSplit[3]);
-                            jogoInstancia.iniciaJogo(vez);
-                            Platform.runLater(() -> {
-                                
-                                FXMLDocumentController.labelDesistenciaEstatico.setVisible(false);
-                                FXMLDocumentController.labelEsperaEstatico.setVisible(false);
-                                FXMLDocumentController.escondeAnchorEstatico.setVisible(true);
-                            });
-                           
-                        }
-                    }
-                    else if(msg.startsWith("#pronto")){
-                        // #pronto-nomeJogador-vez
-                        String[] msgSplit = msg.split("-");
-                        nomeAdversario = msgSplit[1];
-                        MapaInfo mapaAdversario = (MapaInfo) inObj.readObject();
-                        boolean vez = Boolean.parseBoolean(msgSplit[2]);
-                        jogoInstancia.setNaviosAdversario(mapaAdversario.mapaNavios);
-                        jogoInstancia.setPosicoesNaviosAdversario(mapaAdversario.posicoesNavios);
-                        jogoInstancia.iniciaJogo(vez);
-                        Platform.runLater(() -> {
-                            FXMLDocumentController.labelBatalhaEstatico.setText("Batalha: " + textNomeEstatico.getText() + " vs " + nomeAdversario);
-                            FXMLDocumentController.labelEsperaEstatico.setVisible(false);
-                            FXMLDocumentController.labelDesistenciaEstatico.setVisible(false);
-                            //FXMLDocumentController.labelEsperaEstatico.setText(msg);
-                            FXMLDocumentController.escondeAnchorEstatico.setVisible(true);
-                        });
-                    }
-                    else if(msg.startsWith("#espera")){
-                        // #espera-nada ou #espera-desistencia
-                        String[] msgSplit = msg.split("-");
-                        Platform.runLater(() -> {
-                            FXMLDocumentController.escondeAnchorEstatico.setVisible(false);
-                            FXMLDocumentController.anchorVencedorEstatico.setVisible(false);
-                            FXMLDocumentController.labelEsperaEstatico.setVisible(true);
-                            if(msgSplit[1].equals("nada")) FXMLDocumentController.labelDesistenciaEstatico.setVisible(false);
-                            else FXMLDocumentController.labelDesistenciaEstatico.setVisible(true);
-                        });
-                    }
-                    else if (msg.contains("logout")) {
-                        // #logout-nomeAdversario
-                        String[] msgSplit = msg.split("-");
-                        String time = getMyTime();
-                        String mensagem = "[" + time + "] Jogador " + msgSplit[1] + " abandonou a sala de jogo...\n";
-                        MapaInfo mapa = null; 
-                        while(mapa == null){
-                            jogoInstancia = new Jogo(objOut);
-                            mapa = jogoInstancia.geraMeusNavios();   
-                        }
-                        out.writeUTF("#novoMapa");
-                        jogoInstancia.mandaMapa(mapa);
-                        FXMLDocumentController.outputChatTextEstatico.appendText(mensagem);
-                    }*/
+                    
                 } catch (IOException e) {
 
                 }

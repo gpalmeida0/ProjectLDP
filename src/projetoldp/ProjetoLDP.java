@@ -99,6 +99,12 @@ public class ProjetoLDP {
 
     }
     
+     public void movePeca(String idpeca, int mover) {
+
+        
+
+    }
+    
     public void lancouDados(){
         FXMLDocumentController.lancardadosEstatico.setDisable(true);
     }
@@ -108,7 +114,7 @@ public class ProjetoLDP {
         int dado1;
         int dado2;
         int dado3;
-
+        
         int[] dados = new int[3];
 
         if (!lancouDados) {
@@ -138,9 +144,15 @@ public class ProjetoLDP {
             if (!this.minhavez) {
                 FXMLDocumentController.jogadaEstatico.setDisable(true);
                 FXMLDocumentController.lancardadosEstatico.setDisable(true);
+                FXMLDocumentController.jogarEstatico.setDisable(true);
+                 FXMLDocumentController.pecaidEstatico.setDisable(true);
+                  FXMLDocumentController.posicaoidEstatico.setDisable(true);
             } else {
                 FXMLDocumentController.jogadaEstatico.setDisable(false);
                 FXMLDocumentController.lancardadosEstatico.setDisable(false);
+                  FXMLDocumentController.jogarEstatico.setDisable(false);
+                 FXMLDocumentController.pecaidEstatico.setDisable(false);
+                  FXMLDocumentController.posicaoidEstatico.setDisable(false);
             }
         });
         Platform.runLater(() -> {
