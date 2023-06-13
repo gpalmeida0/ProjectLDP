@@ -138,8 +138,17 @@ public class Player extends Application {
 
         inObj = new ObjectInputStream(socket.getInputStream());
         jogoInstancia = new ProjetoLDP(objOut);
-        String nomeJogadorserver = in.readUTF();
 
+        String nomeJogadorserver = in.readUTF();
+        System.out.println(nomeJogadorserver);
+        String[] parts = nomeJogadorserver.split("\\s+");
+        String numberString = parts[1];
+
+// Convert the number string to an int
+        int id = Integer.parseInt(numberString);
+        System.out.println(id);
+// Print the number
+        System.out.println("Number: " + id);
         comecar = true;
         // Thread que serve para o cliente envia mensagens para o servidor
         Thread enviarMensagem;
@@ -179,6 +188,7 @@ public class Player extends Application {
                     try {
 
                         out.writeUTF("#vez"); //FXMLDocumentController.txtDadosEstatico.setText("Nabo");
+                        System.out.println("qwedfrtyukil");
                     } catch (IOException ex) {
                         Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -194,7 +204,11 @@ public class Player extends Application {
                     try {
                         String peca = FXMLDocumentController.pecaidEstatico.getText();
                         String mover = FXMLDocumentController.posicaoidEstatico.getText();
-                        out.writeUTF("#jogada" + "-" + peca + "-" + mover); //FXMLDocumentController.txtDadosEstatico.setText("Nabo");
+
+                    
+
+                       
+                        out.writeUTF("#jogada" + "-" + peca + "-" + mover + "-" + id); //FXMLDocumentController.txtDadosEstatico.setText("Nabo");
                     } catch (IOException ex) {
                         Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -203,7 +217,6 @@ public class Player extends Application {
 
             });
 
-           
         });
 
         Thread lerMensagem;
@@ -239,16 +252,14 @@ public class Player extends Application {
                         String[] msgSplit = msg.split("-");
                         String peca = msgSplit[1];
                         int mover = Integer.parseInt(msgSplit[2]);
-                       
+
                         if (mover <= 12) {
                             //verificar se pode mover a casa
                             if (mover == Integer.parseInt(FXMLDocumentController.text1Estatico.getText())) {
                                 //mover peca com dado1 e por caixa do dado 0 ou disable
                                 FXMLDocumentController.text1Estatico.setText("0");
-                               
-                               
-                                jogoInstancia.movePeca(peca, mover);
-                                 System.out.println("TAMANHO ARRAY CASA1---"+jogoInstancia.casa1.posicao.size());
+
+                              
                             } else if (mover == Integer.parseInt(FXMLDocumentController.text2Estatico.getText())) {
                                 FXMLDocumentController.text2Estatico.setText("0");
                             } else if (mover == Integer.parseInt(FXMLDocumentController.text3Estatico.getText())) {
@@ -268,42 +279,10 @@ public class Player extends Application {
                                 FXMLDocumentController.text2Estatico.setText("0");
                             }
 
-                            System.out.println(peca);
-                            System.out.println(mover);
-                            double targetX = 0;
-                            double targetY = 0;
-                            switch (mover) {
-                                case 1:
-                                    targetX = FXMLDocumentController.pos1Estatico.layoutXProperty().get();
-                                    targetY = FXMLDocumentController.pos1Estatico.layoutYProperty().get();
-                                    System.out.println(targetX);
-                                    System.out.println(targetY);
-                                    break;
-
-                                default:
-                                    // Handle the case when an invalid position is provided
-                                    return;
-                            }
-                            switch (peca) {
-                                case "1":
-
-                                    FXMLDocumentController.p1Estatico.layoutXProperty().set(targetX);
-                                    FXMLDocumentController.p1Estatico.layoutYProperty().set(targetY);
-                                    targetX = FXMLDocumentController.p1Estatico.layoutXProperty().get();
-                                    targetY = FXMLDocumentController.p1Estatico.layoutYProperty().get();
-                                    System.out.println(targetX);
-                                    System.out.println(targetY);
-                                    break;
-
-                                default:
-                                    // Handle the case when an invalid position is provided
-                                    return;
-                            }
                         }
 
                     }
 
-                    
                 } catch (IOException e) {
 
                 }

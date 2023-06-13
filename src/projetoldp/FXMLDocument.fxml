@@ -117,7 +117,7 @@
          </font>
       </Label>
       <TextArea fx:id="pecaid" layoutX="1033.0" layoutY="439.0" prefHeight="27.0" prefWidth="200.0" promptText="Nº Peça" />
-      <TextArea fx:id="posicaoid" layoutX="1033.0" layoutY="473.0" prefHeight="27.0" prefWidth="200.0" promptText="Posição tabuleiro" />
+      <TextArea fx:id="posicaoid" layoutX="1033.0" layoutY="473.0" prefHeight="27.0" prefWidth="200.0" promptText="Casas a mover" />
       <Button fx:id="jogar" layoutX="1034.0" layoutY="512.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Jogar" />
     </children>
 </AnchorPane>

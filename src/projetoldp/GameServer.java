@@ -66,6 +66,7 @@ public class GameServer {
 
                     njogadores++;
                     id++;
+
                     minhavez = false;
                     System.out.println("Adiciona cliente " + id + " à lista ativa." + s.getInetAddress());
 
@@ -93,12 +94,35 @@ public class GameServer {
         private List<String[]> posicoesNavios;
         private boolean jogoTerminado;
         boolean minhavez;
+        Casa[] casas = new Casa[24];
 
-        public  ArrayList<Peca> pecas = new ArrayList<Peca>(15);
+        Casa casa1 = new Casa(1);
+        Casa casa2 = new Casa(2);
+        Casa casa3 = new Casa(3);
+        Casa casa4 = new Casa(4);
+        Casa casa5 = new Casa(5);
+        Casa casa6 = new Casa(6);
+        Casa casa7 = new Casa(7);
+        Casa casa8 = new Casa(8);
+        Casa casa9 = new Casa(9);
+        Casa casa10 = new Casa(10);
+        Casa casa11 = new Casa(11);
+        Casa casa12 = new Casa(12);
+        Casa casa13 = new Casa(13);
+        Casa casa14 = new Casa(14);
+        Casa casa15 = new Casa(15);
+        Casa casa16 = new Casa(16);
+        Casa casa17 = new Casa(17);
+        Casa casa18 = new Casa(18);
+        Casa casa19 = new Casa(19);
+        Casa casa20 = new Casa(20);
+        Casa casa21 = new Casa(21);
+        Casa casa22 = new Casa(22);
+        Casa casa23 = new Casa(23);
+        Casa casa24 = new Casa(24);
+
+        public ArrayList<Peca> pecas = new ArrayList<Peca>(15);
         public ArrayList<Peca> pecasAtacadas = new ArrayList<Peca>(15);
-
-        
-     
 
         private ClientHandler(Socket s, String string,
                 DataInputStream dis, DataOutputStream dos, int id, ObjectInputStream in, ObjectOutputStream objOut, boolean minhavez) {
@@ -120,22 +144,47 @@ public class GameServer {
         static String recebido;
 
         private void geraPecas(int playerID) {
+            casas[0] = casa1;
+            casas[1] = casa2;
+            casas[2] = casa3;
+            casas[3] = casa4;
+            casas[4] = casa5;
+            casas[5] = casa6;
+            casas[6] = casa7;
+            casas[7] = casa8;
+            casas[8] = casa9;
+            casas[9] = casa10;
+            casas[10] = casa11;
+            casas[11] = casa12;
+            casas[12] = casa13;
+            casas[13] = casa14;
+            casas[14] = casa15;
+            casas[15] = casa16;
+            casas[16] = casa17;
+            casas[17] = casa18;
+            casas[18] = casa19;
+            casas[19] = casa20;
+            casas[20] = casa21;
+            casas[21] = casa22;
+            casas[22] = casa23;
+            casas[23] = casa24;
             if (playerID == 0) {
+
                 Peca peca1;
-        Peca peca2;
-        Peca peca3;
-        Peca peca4;
-        Peca peca5;
-        Peca peca6;
-        Peca peca7;
-        Peca peca8;
-        Peca peca9;
-        Peca peca10;
-        Peca peca11;
-        Peca peca12;
-        Peca peca13;
-        Peca peca14;
-        Peca peca15;
+                Peca peca2;
+                Peca peca3;
+                Peca peca4;
+                Peca peca5;
+                Peca peca6;
+                Peca peca7;
+                Peca peca8;
+                Peca peca9;
+                Peca peca10;
+                Peca peca11;
+                Peca peca12;
+                Peca peca13;
+                Peca peca14;
+                Peca peca15;
                 peca1 = new Peca(1);
                 peca2 = new Peca(2);
                 peca3 = new Peca(3);
@@ -170,21 +219,21 @@ public class GameServer {
                 System.out.println("PECAS criadas player 1: " + pecas.get(0).id);
 
             } else if (playerID == 1) {
-                   Peca peca16;
-        Peca peca17;
-        Peca peca18;
-        Peca peca19;
-        Peca peca20;
-        Peca peca21;
-        Peca peca22;
-        Peca peca23;
-        Peca peca24;
-        Peca peca25;
-        Peca peca26;
-        Peca peca27;
-        Peca peca28;
-        Peca peca29;
-        Peca peca30;
+                Peca peca16;
+                Peca peca17;
+                Peca peca18;
+                Peca peca19;
+                Peca peca20;
+                Peca peca21;
+                Peca peca22;
+                Peca peca23;
+                Peca peca24;
+                Peca peca25;
+                Peca peca26;
+                Peca peca27;
+                Peca peca28;
+                Peca peca29;
+                Peca peca30;
                 peca16 = new Peca(16);
                 peca17 = new Peca(17);
                 peca18 = new Peca(18);
@@ -306,12 +355,23 @@ public class GameServer {
                             for (ClientHandler client : GameServer.listaClientes) {
                                 client.dos.writeUTF(recebido);
                             }
-                        }else if (recebido.startsWith("#jogada")) {
+                        } else if (recebido.startsWith("#jogada")) {
+                            String[] msgSplit = recebido.split("-");
+                            String peca = msgSplit[1];
+                            int mover = Integer.parseInt(msgSplit[2]);
+                            int player_id_jogada = Integer.parseInt(msgSplit[3]);
                             for (ClientHandler client : GameServer.listaClientes) {
                                 client.dos.writeUTF(recebido);
-                                
-                                System.out.println(client.id+"---"+client.pecas.get(0).id);
-                                
+                                if (Integer.parseInt(peca) <= 15) {
+                                    if (client.id == player_id_jogada) {
+                                        System.out.println("TAMANHO"+casa1.posicao.size());
+
+                                        casa1.posicao.add(client.pecas.get(0));
+                                         System.out.println("TAMANHO"+casa1.posicao.size());
+
+                                    }
+                                }
+
                             }
                         }
 
