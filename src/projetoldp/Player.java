@@ -205,9 +205,6 @@ public class Player extends Application {
                         String peca = FXMLDocumentController.pecaidEstatico.getText();
                         String mover = FXMLDocumentController.posicaoidEstatico.getText();
 
-                    
-
-                       
                         out.writeUTF("#jogada" + "-" + peca + "-" + mover + "-" + id); //FXMLDocumentController.txtDadosEstatico.setText("Nabo");
                     } catch (IOException ex) {
                         Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
@@ -252,14 +249,13 @@ public class Player extends Application {
                         String[] msgSplit = msg.split("-");
                         String peca = msgSplit[1];
                         int mover = Integer.parseInt(msgSplit[2]);
+                        int posicao = Integer.parseInt(msgSplit[3]);
 
                         if (mover <= 12) {
                             //verificar se pode mover a casa
                             if (mover == Integer.parseInt(FXMLDocumentController.text1Estatico.getText())) {
-                                //mover peca com dado1 e por caixa do dado 0 ou disable
-                                FXMLDocumentController.text1Estatico.setText("0");
+                                jogoInstancia.movePeca(peca,posicao);
 
-                              
                             } else if (mover == Integer.parseInt(FXMLDocumentController.text2Estatico.getText())) {
                                 FXMLDocumentController.text2Estatico.setText("0");
                             } else if (mover == Integer.parseInt(FXMLDocumentController.text3Estatico.getText())) {
@@ -270,13 +266,13 @@ public class Player extends Application {
                             } else if (mover == (Integer.parseInt(FXMLDocumentController.text1Estatico.getText()) + Integer.parseInt(FXMLDocumentController.text3Estatico.getText()))) {
                                 FXMLDocumentController.text1Estatico.setText("0");
                                 FXMLDocumentController.text3Estatico.setText("0");
-                            } else if (mover == (Integer.parseInt(FXMLDocumentController.text2Estatico.getText()) + Integer.parseInt(FXMLDocumentController.text2Estatico.getText()))) {
+                            } else if (mover == (Integer.parseInt(FXMLDocumentController.text2Estatico.getText()) + Integer.parseInt(FXMLDocumentController.text3Estatico.getText()))) {
                                 FXMLDocumentController.text2Estatico.setText("0");
-                                FXMLDocumentController.text2Estatico.setText("0");
+                                FXMLDocumentController.text3Estatico.setText("0");
                             } else if (mover == (Integer.parseInt(FXMLDocumentController.text1Estatico.getText()) + Integer.parseInt(FXMLDocumentController.text2Estatico.getText()) + Integer.parseInt(FXMLDocumentController.text3Estatico.getText()))) {
                                 FXMLDocumentController.text1Estatico.setText("0");
                                 FXMLDocumentController.text2Estatico.setText("0");
-                                FXMLDocumentController.text2Estatico.setText("0");
+                                FXMLDocumentController.text3Estatico.setText("0");
                             }
 
                         }

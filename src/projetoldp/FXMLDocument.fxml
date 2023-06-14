@@ -1,41 +1,17 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
-<?import java.lang.*?>
-<?import javafx.scene.control.*?>
-<?import javafx.scene.layout.*?>
-<?import javafx.scene.shape.*?>
-<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.layout.AnchorPane?>
 <?import javafx.scene.layout.Pane?>
 <?import javafx.scene.shape.Rectangle?>
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="743.0" prefWidth="1250.0" style="-fx-background-color: #d8d6c9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetoldp.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="743.0" prefWidth="1250.0" style="-fx-background-color: #d8d6c9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetoldp.FXMLDocumentController">
     <children>
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4d1b0c" height="49.0" layoutX="1176.0" layoutY="339.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="50.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4d1b0c" height="49.0" layoutX="1108.0" layoutY="339.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="50.0" />
-      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4d1b0c" height="49.0" layoutX="1035.0" layoutY="339.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="50.0" />
-        <Button fx:id="lancardados" layoutX="1035.0" layoutY="301.0" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="190.0" text="LANÇAR DADOS" />
-        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
-      <Text fx:id="text1" fill="WHITE" layoutX="1054.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="34.13671875">
-         <font>
-            <Font name="Segoe UI Black Italic" size="20.0" />
-         </font>
-      </Text>
-      <Text fx:id="text2" fill="WHITE" layoutX="1125.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="34.13671875">
-         <font>
-            <Font name="Segoe UI Black Italic" size="20.0" />
-         </font>
-      </Text>
-      <Text fx:id="text3" fill="WHITE" layoutX="1194.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="34.13671875">
-         <font>
-            <Font name="Segoe UI Black Italic" size="20.0" />
-         </font>
-      </Text>
-      <Pane fx:id="tabuleiroPane" layoutX="34.0" layoutY="85.0" prefHeight="648.0" prefWidth="974.0" style="-fx-background-color: #ada89a;">
+      <Pane fx:id="tabuleiroPane" layoutX="34.0" layoutY="85.0" prefHeight="648.0" prefWidth="1204.0" style="-fx-background-color: #ada89a;">
          <children>
             <Rectangle fx:id="pos1" arcHeight="5.0" arcWidth="5.0" fill="#8e6239" height="200.0" layoutX="64.0" layoutY="301.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="44.0" />
             <Rectangle fx:id="pos5" arcHeight="5.0" arcWidth="5.0" fill="#8e6239" height="200.0" layoutX="344.0" layoutY="301.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="44.0" />
@@ -76,30 +52,26 @@
             <Rectangle fx:id="p12" arcHeight="5.0" arcWidth="5.0" fill="#d7cbad" height="17.0" layoutX="100.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
             <Rectangle fx:id="p10" arcHeight="5.0" arcWidth="5.0" fill="#d7cbad" height="17.0" layoutX="64.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
             <Rectangle fx:id="p9" arcHeight="5.0" arcWidth="5.0" fill="#d7cbad" height="17.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
+            <Rectangle fx:id="p24" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="1031.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
+            <Rectangle fx:id="p25" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="1001.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
+            <Rectangle fx:id="p27" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="971.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
+            <Rectangle fx:id="p26" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="941.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
+            <Rectangle fx:id="p30" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="915.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
+            <Rectangle fx:id="p29" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="885.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
+            <Rectangle fx:id="p28" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="856.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
+            <Rectangle fx:id="p20" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="826.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
+            <Rectangle fx:id="p21" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="800.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
+            <Rectangle fx:id="p23" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="770.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
+            <Rectangle fx:id="p22" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="748.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
+            <Rectangle fx:id="p18" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="722.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
+            <Rectangle fx:id="p19" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="694.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
+            <Rectangle fx:id="p17" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="660.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
             <Text fill="#4e2f20" layoutX="433.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÁBULA" wrappingWidth="190.13671875">
                <font>
                   <Font name="Segoe UI Black" size="46.0" />
                </font>
             </Text>
-         </children>
-      </Pane>
-      <Pane fx:id="pecasPane2" layoutX="639.0" layoutY="671.0" prefHeight="49.0" prefWidth="576.0" style="-fx-background-color: #34170d;">
-         <children>
-            <Rectangle fx:id="p24" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="316.0" layoutY="16.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p25" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="346.0" layoutY="16.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p27" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="406.0" layoutY="16.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p26" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="376.0" layoutY="16.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p30" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="496.0" layoutY="16.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p29" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="466.0" layoutY="16.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p28" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="436.0" layoutY="16.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p20" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="196.0" layoutY="16.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p21" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="226.0" layoutY="16.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p23" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="286.0" layoutY="16.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p22" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="256.0" layoutY="16.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p18" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="136.0" layoutY="16.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p19" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="166.0" layoutY="16.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p17" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="106.0" layoutY="16.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p16" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="76.0" layoutY="16.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
+            <Rectangle fx:id="p16" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="638.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
          </children>
       </Pane>
       <Pane fx:id="pecasatacadasPane1" layoutX="34.0" layoutY="615.0" prefHeight="49.0" prefWidth="576.0" style="-fx-background-color: #34170d;" />
@@ -118,6 +90,26 @@
       </Label>
       <TextArea fx:id="pecaid" layoutX="1033.0" layoutY="439.0" prefHeight="27.0" prefWidth="200.0" promptText="Nº Peça" />
       <TextArea fx:id="posicaoid" layoutX="1033.0" layoutY="473.0" prefHeight="27.0" prefWidth="200.0" promptText="Casas a mover" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4d1b0c" height="49.0" layoutX="1176.0" layoutY="339.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="50.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4d1b0c" height="49.0" layoutX="1108.0" layoutY="339.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="50.0" />
+      <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4d1b0c" height="49.0" layoutX="1035.0" layoutY="339.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="50.0" />
+        <Button fx:id="lancardados" layoutX="1035.0" layoutY="301.0" onAction="#handleButtonAction" prefHeight="25.0" prefWidth="190.0" text="LANÇAR DADOS" />
+        <Label fx:id="label" layoutX="126" layoutY="120" minHeight="16" minWidth="69" />
+      <Text fx:id="text1" fill="WHITE" layoutX="1054.0" layoutY="371.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="34.13671875">
+         <font>
+            <Font name="Segoe UI Black Italic" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="text2" fill="WHITE" layoutX="1125.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="34.13671875">
+         <font>
+            <Font name="Segoe UI Black Italic" size="20.0" />
+         </font>
+      </Text>
+      <Text fx:id="text3" fill="WHITE" layoutX="1194.0" layoutY="372.0" strokeType="OUTSIDE" strokeWidth="0.0" text="0" wrappingWidth="34.13671875">
+         <font>
+            <Font name="Segoe UI Black Italic" size="20.0" />
+         </font>
+      </Text>
       <Button fx:id="jogar" layoutX="1034.0" layoutY="512.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Jogar" />
     </children>
 </AnchorPane>

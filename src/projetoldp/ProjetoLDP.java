@@ -22,15 +22,12 @@ public class ProjetoLDP {
     private boolean lancouDados = false;
     private boolean podeMover = false;
     private boolean podeRetirar = false;
-   
 
     ObjectOutputStream out;
     private boolean minhavez = true;
 
     public ProjetoLDP(ObjectOutputStream out) {
         this.out = out;
-
-       
 
     }
 
@@ -50,16 +47,55 @@ public class ProjetoLDP {
         FXMLDocumentController.text3Estatico.setText("" + d3);
 
     }
-    
-     public void movePeca(String idpeca, int mover, int id) {
 
-        
-      
-                    
+    public void movePeca(String peca, int posicao) {
+
+        FXMLDocumentController.text1Estatico.setText("0");
+        double targetX = 0;
+        double targetY = 0;
+
+        switch (posicao) {
+            case 1:
+                targetX = FXMLDocumentController.pos1Estatico.layoutXProperty().get();
+                targetY = FXMLDocumentController.pos1Estatico.layoutYProperty().get();
+                System.out.println(targetX);
+                System.out.println(targetY);
+                break;
+
+            default:
+                // Handle the case when an invalid position is provided
+                return;
+        }
+
+        switch (peca) {
+            case "1":
+                FXMLDocumentController.p1Estatico.layoutXProperty().set(targetX);
+                FXMLDocumentController.p1Estatico.layoutYProperty().set(targetY);
+                targetX = FXMLDocumentController.p1Estatico.layoutXProperty().get();
+                targetY = FXMLDocumentController.p1Estatico.layoutYProperty().get();
+                System.out.println(targetX);
+                System.out.println(targetY);
+
+                break;
+
+            case "16":
+                FXMLDocumentController.p16Estatico.layoutXProperty().set(targetX);
+                FXMLDocumentController.p16Estatico.layoutYProperty().set(targetY);
+                targetX = FXMLDocumentController.p16Estatico.layoutXProperty().get();
+                targetY = FXMLDocumentController.p16Estatico.layoutYProperty().get();
+                System.out.println(targetX);
+                System.out.println(targetY);
+
+                break;
+
+            default:
+                // Handle the case when an invalid position is provided
+                return;
+        }
 
     }
-    
-    public void lancouDados(){
+
+    public void lancouDados() {
         FXMLDocumentController.lancardadosEstatico.setDisable(true);
     }
 
@@ -68,7 +104,7 @@ public class ProjetoLDP {
         int dado1;
         int dado2;
         int dado3;
-        
+
         int[] dados = new int[3];
 
         if (!lancouDados) {
@@ -93,20 +129,20 @@ public class ProjetoLDP {
 
     public void iniciaJogo(boolean vez) {
         this.minhavez = vez;
-        
+
         Platform.runLater(() -> {
             if (!this.minhavez) {
                 FXMLDocumentController.jogadaEstatico.setDisable(true);
                 FXMLDocumentController.lancardadosEstatico.setDisable(true);
                 FXMLDocumentController.jogarEstatico.setDisable(true);
-                 FXMLDocumentController.pecaidEstatico.setDisable(true);
-                  FXMLDocumentController.posicaoidEstatico.setDisable(true);
+                FXMLDocumentController.pecaidEstatico.setDisable(true);
+                FXMLDocumentController.posicaoidEstatico.setDisable(true);
             } else {
                 FXMLDocumentController.jogadaEstatico.setDisable(false);
                 FXMLDocumentController.lancardadosEstatico.setDisable(false);
-                  FXMLDocumentController.jogarEstatico.setDisable(false);
-                 FXMLDocumentController.pecaidEstatico.setDisable(false);
-                  FXMLDocumentController.posicaoidEstatico.setDisable(false);
+                FXMLDocumentController.jogarEstatico.setDisable(false);
+                FXMLDocumentController.pecaidEstatico.setDisable(false);
+                FXMLDocumentController.posicaoidEstatico.setDisable(false);
             }
         });
         Platform.runLater(() -> {
@@ -122,20 +158,20 @@ public class ProjetoLDP {
     public void mudaVez() {
         this.minhavez = !this.minhavez;
         lancouDados = false;
-        
+
         Platform.runLater(() -> {
             if (!this.minhavez) {
                 FXMLDocumentController.jogadaEstatico.setDisable(true);
                 FXMLDocumentController.lancardadosEstatico.setDisable(true);
-                 FXMLDocumentController.jogarEstatico.setDisable(true);
-                 FXMLDocumentController.pecaidEstatico.setDisable(true);
-                  FXMLDocumentController.posicaoidEstatico.setDisable(true);
+                FXMLDocumentController.jogarEstatico.setDisable(true);
+                FXMLDocumentController.pecaidEstatico.setDisable(true);
+                FXMLDocumentController.posicaoidEstatico.setDisable(true);
             } else {
                 FXMLDocumentController.jogadaEstatico.setDisable(false);
                 FXMLDocumentController.lancardadosEstatico.setDisable(false);
-                 FXMLDocumentController.jogarEstatico.setDisable(false);
-                 FXMLDocumentController.pecaidEstatico.setDisable(false);
-                  FXMLDocumentController.posicaoidEstatico.setDisable(false);
+                FXMLDocumentController.jogarEstatico.setDisable(false);
+                FXMLDocumentController.pecaidEstatico.setDisable(false);
+                FXMLDocumentController.posicaoidEstatico.setDisable(false);
             }
         });
         Platform.runLater(() -> {

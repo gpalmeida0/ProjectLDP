@@ -70,6 +70,10 @@ public class FXMLDocumentController implements Initializable {
     private Rectangle p1;
     public static Rectangle p1Estatico;
     
+     @FXML
+    private Rectangle p16;
+    public static Rectangle p16Estatico;
+    
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
@@ -100,6 +104,7 @@ public class FXMLDocumentController implements Initializable {
         jogarEstatico = jogar;
         pos1Estatico = pos1;
         p1Estatico = p1;
+        p16Estatico = p16;
 
     }
 
