@@ -1,5 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
+<?import javafx.scene.paint.*?>
+<?import java.lang.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.text.*?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.control.TextArea?>
@@ -9,7 +15,7 @@
 <?import javafx.scene.text.Font?>
 <?import javafx.scene.text.Text?>
 
-<AnchorPane id="AnchorPane" prefHeight="743.0" prefWidth="1250.0" style="-fx-background-color: #d8d6c9;" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetoldp.FXMLDocumentController">
+<AnchorPane id="AnchorPane" prefHeight="743.0" prefWidth="1250.0" style="-fx-background-color: #d8d6c9;" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="projetoldp.FXMLDocumentController">
     <children>
       <Pane fx:id="tabuleiroPane" layoutX="34.0" layoutY="85.0" prefHeight="648.0" prefWidth="1204.0" style="-fx-background-color: #ada89a;">
          <children>
@@ -37,41 +43,192 @@
             <Rectangle fx:id="pos21" arcHeight="5.0" arcWidth="5.0" fill="#8e6239" height="200.0" layoutX="274.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="44.0" />
             <Rectangle fx:id="pos20" arcHeight="5.0" arcWidth="5.0" fill="#8e6239" height="200.0" layoutX="344.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="44.0" />
             <Rectangle fx:id="pos24" arcHeight="5.0" arcWidth="5.0" fill="#8e6239" height="200.0" layoutX="64.0" layoutY="14.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="0.0" width="44.0" />
-            <Rectangle fx:id="p1" arcHeight="5.0" arcWidth="5.0" fill="#d7cbad" height="17.0" layoutX="458.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p2" arcHeight="5.0" arcWidth="5.0" fill="#d7cbad" height="17.0" layoutX="428.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p4" arcHeight="5.0" arcWidth="5.0" fill="#d7cbad" height="17.0" layoutX="398.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p3" arcHeight="5.0" arcWidth="5.0" fill="#d7cbad" height="17.0" layoutX="366.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p7" arcHeight="5.0" arcWidth="5.0" fill="#d7cbad" height="17.0" layoutX="336.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p8" arcHeight="5.0" arcWidth="5.0" fill="#d7cbad" height="17.0" layoutX="310.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p6" arcHeight="5.0" arcWidth="5.0" fill="#d7cbad" height="17.0" layoutX="274.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p5" arcHeight="5.0" arcWidth="5.0" fill="#d7cbad" height="17.0" layoutX="248.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p13" arcHeight="5.0" arcWidth="5.0" fill="#d7cbad" height="17.0" layoutX="218.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p14" arcHeight="5.0" arcWidth="5.0" fill="#d7cbad" height="17.0" layoutX="196.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p15" arcHeight="5.0" arcWidth="5.0" fill="#d7cbad" height="17.0" layoutX="162.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p11" arcHeight="5.0" arcWidth="5.0" fill="#d7cbad" height="17.0" layoutX="134.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p12" arcHeight="5.0" arcWidth="5.0" fill="#d7cbad" height="17.0" layoutX="100.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p10" arcHeight="5.0" arcWidth="5.0" fill="#d7cbad" height="17.0" layoutX="64.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p9" arcHeight="5.0" arcWidth="5.0" fill="#d7cbad" height="17.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p24" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="1031.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p25" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="1001.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p27" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="971.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p26" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="941.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p30" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="915.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p29" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="885.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p28" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="856.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p20" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="826.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p21" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="800.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p23" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="770.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p22" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="748.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p18" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="722.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p19" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="694.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
-            <Rectangle fx:id="p17" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="660.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
+            <StackPane fx:id="p1" layoutX="39.0" layoutY="604.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d6caae" height="20.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Label text="1" />
+               </children>
+            </StackPane>
             <Text fill="#4e2f20" layoutX="433.0" layoutY="275.0" strokeType="OUTSIDE" strokeWidth="0.0" text="TÁBULA" wrappingWidth="190.13671875">
                <font>
                   <Font name="Segoe UI Black" size="46.0" />
                </font>
             </Text>
-            <Rectangle fx:id="p16" arcHeight="5.0" arcWidth="5.0" fill="#8e4820" height="17.0" layoutX="638.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="16.0" />
+            <StackPane layoutX="164.0" layoutY="144.0" />
+            <StackPane fx:id="p3" layoutX="98.0" layoutY="604.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d6caae" height="20.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Label text="3" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="p4" layoutX="124.0" layoutY="604.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d6caae" height="20.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Label text="4" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="p2" layoutX="64.0" layoutY="605.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d6caae" height="20.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Label text="2" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="p5" layoutX="154.0" layoutY="605.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d6caae" height="20.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Label text="5" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="p6" layoutX="184.0" layoutY="605.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d6caae" height="20.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Label text="6" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="p7" layoutX="216.0" layoutY="605.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d6caae" height="20.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Label text="7" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="p8" layoutX="248.0" layoutY="605.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d6caae" height="20.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Label text="8" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="p13" layoutX="398.0" layoutY="606.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d6caae" height="20.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Label text="13" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="p12" layoutX="366.0" layoutY="606.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d6caae" height="20.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Label text="12" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="p11" layoutX="334.0" layoutY="606.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d6caae" height="20.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Label text="11" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="p10" layoutX="304.0" layoutY="606.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d6caae" height="20.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Label text="10" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="p9" layoutX="274.0" layoutY="605.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d6caae" height="20.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Label text="9" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="p14" layoutX="423.0" layoutY="605.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d6caae" height="20.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Label text="14" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="p15" layoutX="448.0" layoutY="606.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#d6caae" height="20.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Label text="15" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="p30" layoutX="1039.0" layoutY="607.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b45a24" height="20.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Label text="30" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="p29" layoutX="1014.0" layoutY="606.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b45a24" height="20.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Label text="29" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="p24" layoutX="865.0" layoutY="606.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b45a24" height="20.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Label text="24" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="p25" layoutX="895.0" layoutY="607.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b45a24" height="20.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Label text="25" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="p26" layoutX="925.0" layoutY="607.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b45a24" height="20.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Label text="26" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="p27" layoutX="957.0" layoutY="607.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b45a24" height="20.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Label text="27" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="p28" layoutX="989.0" layoutY="607.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b45a24" height="20.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Label text="28" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="p23" layoutX="839.0" layoutY="606.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b45a24" height="20.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Label text="23" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="p22" layoutX="807.0" layoutY="606.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b45a24" height="20.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Label text="22" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="p21" layoutX="775.0" layoutY="606.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b45a24" height="20.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Label text="21" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="p20" layoutX="745.0" layoutY="606.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b45a24" height="20.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Label text="20" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="p17" layoutX="655.0" layoutY="606.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b45a24" height="20.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Label text="17" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="p19" layoutX="715.0" layoutY="605.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b45a24" height="20.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Label text="19" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="p18" layoutX="689.0" layoutY="605.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b45a24" height="20.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Label text="18" />
+               </children>
+            </StackPane>
+            <StackPane fx:id="p16" layoutX="630.0" layoutY="605.0">
+               <children>
+                  <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#b45a24" height="20.0" layoutX="39.0" layoutY="604.0" stroke="#d7cbad" strokeType="INSIDE" strokeWidth="0.0" width="20.0" />
+                  <Label text="16" />
+               </children>
+            </StackPane>
          </children>
       </Pane>
       <Pane fx:id="pecasatacadasPane1" layoutX="34.0" layoutY="615.0" prefHeight="49.0" prefWidth="576.0" style="-fx-background-color: #34170d;" />
