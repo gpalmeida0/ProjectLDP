@@ -827,7 +827,227 @@ public class ProjetoLDP {
                 return;
         }
     }
+    
+    public void retiraPeca(String peca){
+        switch (peca) {
+            case "1":
+                FXMLDocumentController.p1Estatico.setVisible(false);
+             
+               
 
+                break;
+
+            case "2":
+                FXMLDocumentController.p2Estatico.setVisible(false);
+         
+                
+
+                break;
+
+            case "3":
+                FXMLDocumentController.p3Estatico.setVisible(false);
+                
+             
+
+                break;
+
+            case "4":
+                FXMLDocumentController.p4Estatico.setVisible(false);
+              
+               
+
+                break;
+
+            case "5":
+                FXMLDocumentController.p5Estatico.setVisible(false);
+                
+              
+
+                break;
+
+            case "6":
+                FXMLDocumentController.p6Estatico.setVisible(false);
+           
+              
+
+                break;
+
+            case "7":
+                FXMLDocumentController.p7Estatico.setVisible(false);
+          
+               
+
+                break;
+
+            case "8":
+                FXMLDocumentController.p8Estatico.setVisible(false);
+              
+              
+
+                break;
+
+            case "9":
+                FXMLDocumentController.p9Estatico.setVisible(false);
+              
+               
+
+                break;
+
+            case "10":
+                FXMLDocumentController.p10Estatico.setVisible(false);
+                
+              
+
+                break;
+
+            case "11":
+                FXMLDocumentController.p11Estatico.setVisible(false);
+             
+               
+
+                break;
+
+            case "12":
+                FXMLDocumentController.p12Estatico.setVisible(false);
+               
+               
+
+                break;
+
+            case "13":
+                FXMLDocumentController.p13Estatico.setVisible(false);
+                
+               
+
+                break;
+
+            case "14":
+                FXMLDocumentController.p14Estatico.setVisible(false);
+               
+              
+
+                break;
+
+            case "15":
+                FXMLDocumentController.p15Estatico.setVisible(false);
+             
+              
+
+                break;
+
+            case "16":
+                FXMLDocumentController.p16Estatico.setVisible(false);
+                
+              
+
+                break;
+
+            case "17":
+                FXMLDocumentController.p17Estatico.setVisible(false);
+         
+               
+
+                break;
+
+            case "18":
+                FXMLDocumentController.p18Estatico.setVisible(false);
+               
+               
+
+                break;
+
+            case "19":
+                FXMLDocumentController.p19Estatico.setVisible(false);
+          
+              
+
+                break;
+
+            case "20":
+                FXMLDocumentController.p20Estatico.setVisible(false);
+               
+               
+
+                break;
+
+            case "21":
+                FXMLDocumentController.p21Estatico.setVisible(false);
+             
+               
+
+                break;
+
+            case "22":
+                FXMLDocumentController.p22Estatico.setVisible(false);
+              
+               
+
+                break;
+
+            case "23":
+                FXMLDocumentController.p23Estatico.setVisible(false);
+            
+               
+
+                break;
+
+            case "24":
+                FXMLDocumentController.p24Estatico.setVisible(false);
+                
+                
+
+                break;
+
+            case "25":
+                FXMLDocumentController.p25Estatico.setVisible(false);
+             
+               
+
+                break;
+
+            case "26":
+                FXMLDocumentController.p26Estatico.setVisible(false);
+              
+             
+
+                break;
+
+            case "27":
+                FXMLDocumentController.p27Estatico.setVisible(false);
+                
+               
+
+                break;
+
+            case "28":
+                FXMLDocumentController.p28Estatico.setVisible(false);
+              
+               
+
+                break;
+
+            case "29":
+                FXMLDocumentController.p29Estatico.setVisible(false);
+               
+               
+
+                break;
+
+            case "30":
+                FXMLDocumentController.p30Estatico.setVisible(false);
+               
+
+                break;
+
+            default:
+                // Handle the case when an invalid position is provided
+                return;
+        }
+    }
+
+    public void ganhou(int id){
+       
+    }
     public void lancouDados() {
         FXMLDocumentController.lancardadosEstatico.setDisable(true);
     }

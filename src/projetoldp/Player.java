@@ -342,6 +342,10 @@ public class Player extends Application {
                                 }
                         }
                         }
+                    }else if (msg.startsWith("#retirarpeca")) {
+                        String[] msgSplit = msg.split("-");
+                        String peca = msgSplit[1];
+                        jogoInstancia.retiraPeca(peca);
                     }
 
                 } catch (IOException e) {
