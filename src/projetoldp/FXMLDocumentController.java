@@ -378,7 +378,7 @@ public class FXMLDocumentController implements Initializable {
         p27Estatico = p27;
         p28Estatico = p28;
         p29Estatico = p29;
-        p30Estatico = p24;
+        p30Estatico = p30;
         indicativoPecas1Estatico = indicativoPecas1;
         indicativoPecas2Estatico = indicativoPecas2;
        
