@@ -26,6 +26,7 @@ public class ProjetoLDP {
     Random random = new Random();
     ObjectOutputStream out;
     private boolean minhavez = true;
+    boolean ganhou;
 
     public ProjetoLDP(ObjectOutputStream out) {
         this.out = out;
@@ -1045,8 +1046,8 @@ public class ProjetoLDP {
         }
     }
 
-    public void ganhou(int id){
-       
+    public boolean ganhou(){
+       return this.ganhou = true;
     }
     public void lancouDados() {
         FXMLDocumentController.lancardadosEstatico.setDisable(true);

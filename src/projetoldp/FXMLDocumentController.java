@@ -291,6 +291,14 @@ public class FXMLDocumentController implements Initializable {
     private StackPane p30;
     public static StackPane p30Estatico;
     
+     @FXML
+    private Label player1Label;
+    public static Label player1LabelEstatico;
+    
+      @FXML
+    private Label player2Label;
+    public static Label player2LabelEstatico;
+    
     
     
 
@@ -381,7 +389,10 @@ public class FXMLDocumentController implements Initializable {
         p30Estatico = p30;
         indicativoPecas1Estatico = indicativoPecas1;
         indicativoPecas2Estatico = indicativoPecas2;
-       
+        player1LabelEstatico = player1Label;
+        player2LabelEstatico = player2Label;
+        player1LabelEstatico.setVisible(false);
+        player2LabelEstatico.setVisible(false);
         
         
 

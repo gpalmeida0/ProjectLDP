@@ -227,6 +227,10 @@ public class Player extends Application {
 
                         }
 
+                        if (jogoInstancia.ganhou) {
+
+                        }
+
                     } catch (IOException ex) {
                         Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -273,9 +277,9 @@ public class Player extends Application {
                         int posicao = Integer.parseInt(msgSplit[3]);
                         int atacada = Integer.parseInt(msgSplit[4]);
                         boolean podeMover2Etapa = Boolean.parseBoolean(msgSplit[5]);
-                        
+
                         if (posicao <= 12) {
-                            
+
                             if (mover <= 12) {
 
                                 //verificar se pode mover a casa
@@ -309,9 +313,9 @@ public class Player extends Application {
                                 }
 
                             }
-                        }else{
-                            if(podeMover2Etapa){
-                            //verificar se pode mover a casa
+                        } else {
+                            if (podeMover2Etapa) {
+                                //verificar se pode mover a casa
                                 if (mover == Integer.parseInt(FXMLDocumentController.text1Estatico.getText())) {
                                     FXMLDocumentController.text1Estatico.setText("0");
                                     jogoInstancia.movePeca(peca, posicao, atacada);
@@ -340,12 +344,67 @@ public class Player extends Application {
                                     FXMLDocumentController.text3Estatico.setText("0");
                                     jogoInstancia.movePeca(peca, posicao, atacada);
                                 }
+                            }
                         }
-                        }
-                    }else if (msg.startsWith("#retirarpeca")) {
+                    } else if (msg.startsWith("#retirarpeca")) {
                         String[] msgSplit = msg.split("-");
                         String peca = msgSplit[1];
-                        jogoInstancia.retiraPeca(peca);
+                        int mover = Integer.parseInt(msgSplit[2]);
+                        if (mover <= 12) {
+
+                            //verificar se pode mover a casa
+                            if (mover == Integer.parseInt(FXMLDocumentController.text1Estatico.getText())) {
+                                FXMLDocumentController.text1Estatico.setText("0");
+                                jogoInstancia.retiraPeca(peca);
+
+                            } else if (mover == Integer.parseInt(FXMLDocumentController.text2Estatico.getText())) {
+                                FXMLDocumentController.text2Estatico.setText("0");
+                                jogoInstancia.retiraPeca(peca);
+                            } else if (mover == Integer.parseInt(FXMLDocumentController.text3Estatico.getText())) {
+                                FXMLDocumentController.text3Estatico.setText("0");
+                                jogoInstancia.retiraPeca(peca);
+                            } else if (mover == (Integer.parseInt(FXMLDocumentController.text1Estatico.getText()) + Integer.parseInt(FXMLDocumentController.text2Estatico.getText()))) {
+                                FXMLDocumentController.text1Estatico.setText("0");
+                                FXMLDocumentController.text2Estatico.setText("0");
+                                jogoInstancia.retiraPeca(peca);
+                            } else if (mover == (Integer.parseInt(FXMLDocumentController.text1Estatico.getText()) + Integer.parseInt(FXMLDocumentController.text3Estatico.getText()))) {
+                                FXMLDocumentController.text1Estatico.setText("0");
+                                FXMLDocumentController.text3Estatico.setText("0");
+                                jogoInstancia.retiraPeca(peca);
+                            } else if (mover == (Integer.parseInt(FXMLDocumentController.text2Estatico.getText()) + Integer.parseInt(FXMLDocumentController.text3Estatico.getText()))) {
+                                FXMLDocumentController.text2Estatico.setText("0");
+                                FXMLDocumentController.text3Estatico.setText("0");
+                                jogoInstancia.retiraPeca(peca);
+                            } else if (mover == (Integer.parseInt(FXMLDocumentController.text1Estatico.getText()) + Integer.parseInt(FXMLDocumentController.text2Estatico.getText()) + Integer.parseInt(FXMLDocumentController.text3Estatico.getText()))) {
+                                FXMLDocumentController.text1Estatico.setText("0");
+                                FXMLDocumentController.text2Estatico.setText("0");
+                                FXMLDocumentController.text3Estatico.setText("0");
+                                jogoInstancia.retiraPeca(peca);
+                            }
+
+                        }
+                    } else if (msg.startsWith("#ganhou")) {
+                        String[] msgSplit = msg.split("-");
+                        int playerWinner = Integer.parseInt(msgSplit[1]);
+                        int playerLoser = Integer.parseInt(msgSplit[2]);
+
+                        if (playerWinner == id) {
+                            FXMLDocumentController.player1LabelEstatico.setVisible(true);
+                            FXMLDocumentController.jogadaEstatico.setDisable(true);
+                            FXMLDocumentController.lancardadosEstatico.setDisable(true);
+                            FXMLDocumentController.jogarEstatico.setDisable(true);
+                            FXMLDocumentController.pecaidEstatico.setDisable(true);
+                            FXMLDocumentController.posicaoidEstatico.setDisable(true);
+                        }
+
+                        if (playerLoser == id) {
+                            FXMLDocumentController.player2LabelEstatico.setVisible(true);
+                            FXMLDocumentController.jogadaEstatico.setDisable(true);
+                            FXMLDocumentController.lancardadosEstatico.setDisable(true);
+                            FXMLDocumentController.jogarEstatico.setDisable(true);
+                            FXMLDocumentController.pecaidEstatico.setDisable(true);
+                            FXMLDocumentController.posicaoidEstatico.setDisable(true);
+                        }
                     }
 
                 } catch (IOException e) {

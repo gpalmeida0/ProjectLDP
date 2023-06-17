@@ -249,6 +249,16 @@
                   <Font size="16.0" />
                </font>
             </Label>
+            <Label fx:id="player1Label" layoutX="39.0" layoutY="196.0" prefHeight="121.0" prefWidth="991.0" style="-fx-background-color: rgba(0,0,0,0.5);" text="PARABENS, GANHASTE!!!" textFill="#11ff00">
+               <font>
+                  <Font name="Impact" size="88.0" />
+               </font>
+            </Label>
+            <Label fx:id="player2Label" alignment="CENTER" layoutX="39.0" layoutY="196.0" prefHeight="121.0" prefWidth="991.0" style="-fx-background-color: rgba(0,0,0,0.5);" text="PERDESTE  :(" textFill="RED">
+               <font>
+                  <Font name="Impact" size="88.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4d1b0c" height="200.0" layoutX="1030.0" layoutY="85.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="10.0" width="200.0" />
@@ -258,7 +268,7 @@
          </font>
       </Text>
       <Button fx:id="jogada" layoutX="1033.0" layoutY="547.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Acabar a Jogada" />
-      <Label fx:id="labelVez" layoutX="417.0" layoutY="24.0" text="Espera pela tua vez!!">
+      <Label fx:id="labelVez" layoutX="417.0" layoutY="24.0" prefHeight="45.0" prefWidth="804.0" text="Espera pela tua vez!!">
          <font>
             <Font name="Segoe UI Black" size="32.0" />
          </font>
