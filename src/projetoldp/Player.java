@@ -147,6 +147,8 @@ public class Player extends Application {
 // Convert the number string to an int
         int id = Integer.parseInt(numberString);
         System.out.println(id);
+
+        jogoInstancia.pecasIndicativo(id);
 // Print the number
         System.out.println("Number: " + id);
         comecar = true;
@@ -203,9 +205,28 @@ public class Player extends Application {
 
                     try {
                         String peca = FXMLDocumentController.pecaidEstatico.getText();
-                        String mover = FXMLDocumentController.posicaoidEstatico.getText();
+                        String moverr = FXMLDocumentController.posicaoidEstatico.getText();
+                        int mover = Integer.parseInt(moverr);
+                        if (mover <= 12) {
+                            //verificar se pode mover a casa
+                            if (mover == Integer.parseInt(FXMLDocumentController.text1Estatico.getText())) {
+                                out.writeUTF("#jogada" + "-" + peca + "-" + mover + "-" + id); //FXMLDocumentController.txtDadosEstatico.setText("Nabo");
+                            } else if (mover == Integer.parseInt(FXMLDocumentController.text2Estatico.getText())) {
+                                out.writeUTF("#jogada" + "-" + peca + "-" + mover + "-" + id); //FXMLDocumentController.txtDadosEstatico.setText("Nabo");
+                            } else if (mover == Integer.parseInt(FXMLDocumentController.text3Estatico.getText())) {
+                                out.writeUTF("#jogada" + "-" + peca + "-" + mover + "-" + id); //FXMLDocumentController.txtDadosEstatico.setText("Nabo");
+                            } else if (mover == (Integer.parseInt(FXMLDocumentController.text1Estatico.getText()) + Integer.parseInt(FXMLDocumentController.text2Estatico.getText()))) {
+                                out.writeUTF("#jogada" + "-" + peca + "-" + mover + "-" + id); //FXMLDocumentController.txtDadosEstatico.setText("Nabo");
+                            } else if (mover == (Integer.parseInt(FXMLDocumentController.text1Estatico.getText()) + Integer.parseInt(FXMLDocumentController.text3Estatico.getText()))) {
+                                out.writeUTF("#jogada" + "-" + peca + "-" + mover + "-" + id); //FXMLDocumentController.txtDadosEstatico.setText("Nabo");
+                            } else if (mover == (Integer.parseInt(FXMLDocumentController.text2Estatico.getText()) + Integer.parseInt(FXMLDocumentController.text3Estatico.getText()))) {
+                                out.writeUTF("#jogada" + "-" + peca + "-" + mover + "-" + id); //FXMLDocumentController.txtDadosEstatico.setText("Nabo");
+                            } else if (mover == (Integer.parseInt(FXMLDocumentController.text1Estatico.getText()) + Integer.parseInt(FXMLDocumentController.text2Estatico.getText()) + Integer.parseInt(FXMLDocumentController.text3Estatico.getText()))) {
+                                out.writeUTF("#jogada" + "-" + peca + "-" + mover + "-" + id); //FXMLDocumentController.txtDadosEstatico.setText("Nabo");
+                            }
 
-                        out.writeUTF("#jogada" + "-" + peca + "-" + mover + "-" + id); //FXMLDocumentController.txtDadosEstatico.setText("Nabo");
+                        }
+
                     } catch (IOException ex) {
                         Logger.getLogger(Player.class.getName()).log(Level.SEVERE, null, ex);
                     }
@@ -250,36 +271,37 @@ public class Player extends Application {
                         String peca = msgSplit[1];
                         int mover = Integer.parseInt(msgSplit[2]);
                         int posicao = Integer.parseInt(msgSplit[3]);
+                        int atacada = Integer.parseInt(msgSplit[4]);
 
                         if (mover <= 12) {
                             //verificar se pode mover a casa
                             if (mover == Integer.parseInt(FXMLDocumentController.text1Estatico.getText())) {
                                 FXMLDocumentController.text1Estatico.setText("0");
-                                jogoInstancia.movePeca(peca,posicao);
+                                jogoInstancia.movePeca(peca, posicao, atacada);
 
                             } else if (mover == Integer.parseInt(FXMLDocumentController.text2Estatico.getText())) {
                                 FXMLDocumentController.text2Estatico.setText("0");
-                                jogoInstancia.movePeca(peca,posicao);
+                                jogoInstancia.movePeca(peca, posicao, atacada);
                             } else if (mover == Integer.parseInt(FXMLDocumentController.text3Estatico.getText())) {
                                 FXMLDocumentController.text3Estatico.setText("0");
-                                jogoInstancia.movePeca(peca,posicao);
+                                jogoInstancia.movePeca(peca, posicao, atacada);
                             } else if (mover == (Integer.parseInt(FXMLDocumentController.text1Estatico.getText()) + Integer.parseInt(FXMLDocumentController.text2Estatico.getText()))) {
                                 FXMLDocumentController.text1Estatico.setText("0");
                                 FXMLDocumentController.text2Estatico.setText("0");
-                                jogoInstancia.movePeca(peca,posicao);
+                                jogoInstancia.movePeca(peca, posicao, atacada);
                             } else if (mover == (Integer.parseInt(FXMLDocumentController.text1Estatico.getText()) + Integer.parseInt(FXMLDocumentController.text3Estatico.getText()))) {
                                 FXMLDocumentController.text1Estatico.setText("0");
                                 FXMLDocumentController.text3Estatico.setText("0");
-                                jogoInstancia.movePeca(peca,posicao);
+                                jogoInstancia.movePeca(peca, posicao, atacada);
                             } else if (mover == (Integer.parseInt(FXMLDocumentController.text2Estatico.getText()) + Integer.parseInt(FXMLDocumentController.text3Estatico.getText()))) {
                                 FXMLDocumentController.text2Estatico.setText("0");
                                 FXMLDocumentController.text3Estatico.setText("0");
-                                jogoInstancia.movePeca(peca,posicao);
+                                jogoInstancia.movePeca(peca, posicao, atacada);
                             } else if (mover == (Integer.parseInt(FXMLDocumentController.text1Estatico.getText()) + Integer.parseInt(FXMLDocumentController.text2Estatico.getText()) + Integer.parseInt(FXMLDocumentController.text3Estatico.getText()))) {
                                 FXMLDocumentController.text1Estatico.setText("0");
                                 FXMLDocumentController.text2Estatico.setText("0");
                                 FXMLDocumentController.text3Estatico.setText("0");
-                                jogoInstancia.movePeca(peca,posicao);
+                                jogoInstancia.movePeca(peca, posicao, atacada);
                             }
 
                         }

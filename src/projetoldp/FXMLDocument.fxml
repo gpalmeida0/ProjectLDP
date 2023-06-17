@@ -229,10 +229,28 @@
                   <Label text="16" />
                </children>
             </StackPane>
+            <Label fx:id="indicativoPecas1" layoutX="35.0" layoutY="571.0" prefHeight="25.0" prefWidth="317.0" text="PEÇAS">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="35.0" layoutY="513.0" prefHeight="25.0" prefWidth="95.0" text="ATACADAS">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label layoutX="628.0" layoutY="513.0" prefHeight="25.0" prefWidth="95.0" text="ATACADAS">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
+            <Label fx:id="indicativoPecas2" layoutX="628.0" layoutY="571.0" prefHeight="25.0" prefWidth="366.0" text="PEÇAS">
+               <font>
+                  <Font size="16.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
-      <Pane fx:id="pecasatacadasPane1" layoutX="34.0" layoutY="615.0" prefHeight="49.0" prefWidth="576.0" style="-fx-background-color: #34170d;" />
-      <Pane fx:id="pecasatacadasPane2" layoutX="639.0" layoutY="615.0" prefHeight="49.0" prefWidth="576.0" style="-fx-background-color: #34170d;" />
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4d1b0c" height="200.0" layoutX="1030.0" layoutY="85.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="10.0" width="200.0" />
       <Text fx:id="txtDados" fill="WHITE" layoutX="1061.0" layoutY="200.0" strokeType="OUTSIDE" strokeWidth="0.0" text="DADOS" wrappingWidth="143.13671875">
          <font>

@@ -13,6 +13,8 @@ import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
 import javafx.scene.control.Button;
 import javafx.scene.control.Label;
+import javafx.scene.control.Menu;
+import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextArea;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.*;
@@ -159,6 +161,14 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Rectangle pos24;
     public static Rectangle pos24Estatico;
+    
+    @FXML
+    private Label indicativoPecas1;
+    public static Label indicativoPecas1Estatico;
+    
+    @FXML
+    private Label indicativoPecas2;
+    public static Label indicativoPecas2Estatico;
 
     @FXML
     private StackPane p1;
@@ -281,6 +291,8 @@ public class FXMLDocumentController implements Initializable {
     private StackPane p30;
     public static StackPane p30Estatico;
     
+    
+    
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
@@ -295,10 +307,14 @@ public class FXMLDocumentController implements Initializable {
         text3.setText("" + dado3);*/
 
     }
+    
+    
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
+       
+        
         text1Estatico = text1;
         text2Estatico = text2;
         text3Estatico = text3;
@@ -363,6 +379,11 @@ public class FXMLDocumentController implements Initializable {
         p28Estatico = p28;
         p29Estatico = p29;
         p30Estatico = p24;
+        indicativoPecas1Estatico = indicativoPecas1;
+        indicativoPecas2Estatico = indicativoPecas2;
+       
+        
+        
 
     }
 
