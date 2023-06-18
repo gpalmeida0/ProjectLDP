@@ -8,6 +8,7 @@ package projetoldp;
 import javafx.scene.shape.Rectangle;
 import java.net.URL;
 import java.util.ResourceBundle;
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
@@ -16,6 +17,7 @@ import javafx.scene.control.Label;
 import javafx.scene.control.Menu;
 import javafx.scene.control.MenuBar;
 import javafx.scene.control.TextArea;
+import javafx.scene.input.MouseEvent;
 import javafx.scene.layout.StackPane;
 import javafx.scene.text.*;
 
@@ -161,11 +163,11 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private Rectangle pos24;
     public static Rectangle pos24Estatico;
-    
+
     @FXML
     private Label indicativoPecas1;
     public static Label indicativoPecas1Estatico;
-    
+
     @FXML
     private Label indicativoPecas2;
     public static Label indicativoPecas2Estatico;
@@ -177,130 +179,154 @@ public class FXMLDocumentController implements Initializable {
     @FXML
     private StackPane p2;
     public static StackPane p2Estatico;
-    
+
     @FXML
     private StackPane p3;
     public static StackPane p3Estatico;
-    
+
     @FXML
     private StackPane p4;
     public static StackPane p4Estatico;
-    
+
     @FXML
     private StackPane p5;
     public static StackPane p5Estatico;
-    
+
     @FXML
     private StackPane p6;
     public static StackPane p6Estatico;
-    
+
     @FXML
     private StackPane p7;
     public static StackPane p7Estatico;
-    
+
     @FXML
     private StackPane p8;
     public static StackPane p8Estatico;
-    
+
     @FXML
     private StackPane p9;
     public static StackPane p9Estatico;
-    
+
     @FXML
     private StackPane p10;
     public static StackPane p10Estatico;
-    
+
     @FXML
     private StackPane p11;
     public static StackPane p11Estatico;
-    
+
     @FXML
     private StackPane p12;
     public static StackPane p12Estatico;
-    
+
     @FXML
     private StackPane p13;
     public static StackPane p13Estatico;
-    
+
     @FXML
     private StackPane p14;
     public static StackPane p14Estatico;
-    
+
     @FXML
     private StackPane p15;
     public static StackPane p15Estatico;
-    
-    
+
     @FXML
     private StackPane p16;
     public static StackPane p16Estatico;
-    
+
     @FXML
     private StackPane p17;
     public static StackPane p17Estatico;
-    
+
     @FXML
     private StackPane p18;
     public static StackPane p18Estatico;
-    
+
     @FXML
     private StackPane p19;
     public static StackPane p19Estatico;
-    
+
     @FXML
     private StackPane p20;
     public static StackPane p20Estatico;
-    
+
     @FXML
     private StackPane p21;
     public static StackPane p21Estatico;
-    
+
     @FXML
     private StackPane p22;
     public static StackPane p22Estatico;
-    
+
     @FXML
     private StackPane p23;
     public static StackPane p23Estatico;
-    
+
     @FXML
     private StackPane p24;
     public static StackPane p24Estatico;
-    
+
     @FXML
     private StackPane p25;
     public static StackPane p25Estatico;
-    
+
     @FXML
     private StackPane p26;
     public static StackPane p26Estatico;
-    
+
     @FXML
     private StackPane p27;
     public static StackPane p27Estatico;
-    
+
     @FXML
     private StackPane p28;
     public static StackPane p28Estatico;
-    
+
     @FXML
     private StackPane p29;
     public static StackPane p29Estatico;
-    
+
     @FXML
     private StackPane p30;
     public static StackPane p30Estatico;
-    
-     @FXML
+
+    @FXML
     private Label player1Label;
     public static Label player1LabelEstatico;
-    
-      @FXML
+
+    @FXML
     private Label player2Label;
     public static Label player2LabelEstatico;
-    
-    
-    
+
+    @FXML
+    private Text regra1;
+    public static Text regra1Estatico;
+
+    @FXML
+    private Text regra2;
+    public static Text regra2Estatico;
+
+    @FXML
+    private Text regra3;
+    public static Text regra3Estatico;
+
+    @FXML
+    private Text regra4;
+    public static Text regra4Estatico;
+
+    @FXML
+    private Text regra5;
+    public static Text regra5Estatico;
+
+    @FXML
+    private Rectangle regras;
+    public static Rectangle regrasEstatico;
+
+    @FXML
+    private Label fechar;
+    public static Label fecharEstatico;
 
     @FXML
     private void handleButtonAction(ActionEvent event) {
@@ -315,14 +341,43 @@ public class FXMLDocumentController implements Initializable {
         text3.setText("" + dado3);*/
 
     }
+
+    @FXML
+    private void fecharRegras(MouseEvent event) {
+        regra1Estatico.setVisible(false);
+        regra2Estatico.setVisible(false);
+        regra3Estatico.setVisible(false);
+        regra4Estatico.setVisible(false);
+        regra5Estatico.setVisible(false);
+        regrasEstatico.setVisible(false);
+        fecharEstatico.setVisible(false);
+    }
+
+    @FXML
+    private void abrirRegras(ActionEvent event) {
+
+        regra1Estatico.setVisible(true);
+        regra2Estatico.setVisible(true);
+        regra3Estatico.setVisible(true);
+        regra4Estatico.setVisible(true);
+        regra5Estatico.setVisible(true);
+        regrasEstatico.setVisible(true);
+        fecharEstatico.setVisible(true);
+    }
     
-    
+    @FXML
+    private void sairJogo(ActionEvent event) {
+
+       Platform.exit();
+    }
 
     @Override
     public void initialize(URL url, ResourceBundle rb) {
         // TODO
-       
-        
+        fecharEstatico = fechar;
+
+        // Set the initial visibility of fecharEstatico to false
+        fecharEstatico.setVisible(false);
         text1Estatico = text1;
         text2Estatico = text2;
         text3Estatico = text3;
@@ -393,8 +448,19 @@ public class FXMLDocumentController implements Initializable {
         player2LabelEstatico = player2Label;
         player1LabelEstatico.setVisible(false);
         player2LabelEstatico.setVisible(false);
-        
-        
+        regra1Estatico = regra1;
+        regra2Estatico = regra2;
+        regra3Estatico = regra3;
+        regra4Estatico = regra4;
+        regra5Estatico = regra5;
+        regrasEstatico = regras;
+        fecharEstatico = fechar;
+        regra1Estatico.setVisible(false);
+        regra2Estatico.setVisible(false);
+        regra3Estatico.setVisible(false);
+        regra4Estatico.setVisible(false);
+        regra5Estatico.setVisible(false);
+        regrasEstatico.setVisible(false);
 
     }
 

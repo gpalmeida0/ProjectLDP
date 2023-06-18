@@ -259,6 +259,37 @@
                   <Font name="Impact" size="88.0" />
                </font>
             </Label>
+            <Rectangle fx:id="regras" arcHeight="5.0" arcWidth="5.0" fill="#835824e8" height="487.0" layoutX="104.0" layoutY="57.0" stroke="TRANSPARENT" strokeType="INSIDE" width="874.0" />
+            <Text fx:id="regra1" fill="WHITE" layoutX="129.0" layoutY="134.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Lança-se os 3 dados e o número que sair é as casas que o jogador pode avançar, podendo este decidir mover apenas uma peça ou repartir os pontos por duas ou três peças. O jogador apenas não pode mover uma única peça mais do que 12 casas seguidas." wrappingWidth="823.861328125">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fx:id="regra2" fill="WHITE" layoutX="129.0" layoutY="262.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Em qualquer casa do tabuleiro é possível estarem várias peças do mesmo jogador." wrappingWidth="823.861328125">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fx:id="regra3" fill="WHITE" layoutX="129.0" layoutY="326.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Se um jogador colocar uma peça numa casa onde exista uma única peça adversária, esta última é retirada do tabuleiro e deve reentrar  na jogada seguinte do adversário." wrappingWidth="823.861328125">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fx:id="regra4" fill="WHITE" layoutX="129.0" layoutY="427.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Um jogador não pode atacar nem ocupar um ponto onde estejam duas ou mais peças adversárias." wrappingWidth="823.861328125">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Text fx:id="regra5" fill="WHITE" layoutX="129.0" layoutY="495.0" strokeType="OUTSIDE" strokeWidth="0.0" text="Nenhum jogador pode ocupar a segunda metade do tabuleiro enquanto não tiver todas as suas peças no tabuleiro." wrappingWidth="823.861328125">
+               <font>
+                  <Font size="24.0" />
+               </font>
+            </Text>
+            <Label fx:id="fechar" layoutX="889.0" layoutY="70.0" onMousePressed="#fecharRegras" text="FECHAR" textFill="WHITE">
+               <font>
+                  <Font name="Impact" size="24.0" />
+               </font>
+            </Label>
          </children>
       </Pane>
       <Rectangle arcHeight="5.0" arcWidth="5.0" fill="#4d1b0c" height="200.0" layoutX="1030.0" layoutY="85.0" stroke="BLACK" strokeType="INSIDE" strokeWidth="10.0" width="200.0" />
@@ -296,5 +327,20 @@
          </font>
       </Text>
       <Button fx:id="jogar" layoutX="1034.0" layoutY="512.0" mnemonicParsing="false" prefHeight="25.0" prefWidth="200.0" text="Jogar" />
+      <MenuBar layoutY="-1.0" prefHeight="25.0" prefWidth="1250.0">
+        <menus>
+          <Menu mnemonicParsing="false" text="TABULA" />
+          <Menu mnemonicParsing="false" text="Regras">
+            <items>
+              <MenuItem mnemonicParsing="false" onAction="#abrirRegras" text="Abrir" />
+            </items>
+          </Menu>
+            <Menu mnemonicParsing="false" text="Opções">
+               <items>
+                  <MenuItem fx:id="sairJogo" mnemonicParsing="false" onAction="#sairJogo" text="Sair" />
+               </items>
+            </Menu>
+        </menus>
+      </MenuBar>
     </children>
 </AnchorPane>
